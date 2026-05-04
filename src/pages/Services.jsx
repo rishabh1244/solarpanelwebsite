@@ -20,7 +20,7 @@ function Services() {
 
 	// Set dynamic SEO Meta Tags for Services Page
 	useEffect(() => {
-		document.title = "Techops Global LLC | Best Wind Energy Storage Company in USA | Best Wind Energy Company in Sierra Leone";
+		document.title = "TechOps Global | Solar, Wind & Energy Storage Solutions USA";
 
 		const setMetaTag = (attrName, attrValue, content) => {
 			let element = document.querySelector(`meta[${attrName}="${attrValue}"]`);
@@ -32,9 +32,9 @@ function Services() {
 			element.setAttribute('content', content);
 		};
 
-		setMetaTag('name', 'title', 'Techops Global LLC | Best Wind Energy Storage Company in USA | Best Wind Energy Company in Sierra Leone ');
-		setMetaTag('name', 'description', 'TechOps Global delivers advanced solar, wind, and battery energy storage solutions for commercial and industrial projects across the USA. Reliable, scalable, and cost-efficient clean energy systems.');
-		setMetaTag('name', 'keywords', 'wind energy company in sierra Leone, wind energy company in USA, battery storage company in sierra Leone,  solar energy company in sierra Leone, solar energy company in Maryland ');
+		setMetaTag('name', 'title', 'TechOps Global | Solar, Wind & Energy Storage Solutions USA');
+		setMetaTag('name', 'description', 'TechOps Global provides renewable energy, solar power, wind systems, battery storage, and industrial infrastructure solutions across the USA and global markets.');
+		setMetaTag('name', 'keywords', 'solar energy systems, wind power infrastructure, battery energy storage, industrial power operations, technical consulting, EPC project support');
 		setMetaTag('name', 'robots', 'index, follow');
 		setMetaTag('http-equiv', 'Content-Type', 'text/html; charset=utf-8');
 		setMetaTag('name', 'language', 'English');
@@ -77,22 +77,22 @@ function Services() {
 					<div className="col-lg-12">
 						<div className="section-title text-center">
 							<div className="section-sub-title">
-								<h4>Our Most Service</h4>
+								<h4>Our Solutions</h4>
 							</div>
 							<div className="section-main-title">
-								<h2>Provide Solar Solution</h2>
+								<h2>Comprehensive Energy & Infrastructure Services</h2>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div className="row">
 					{[
-						{ img: "assets/images/resource/service1.png", title: "Commercial Solar Systems", desc: "Tailored Off-grid, Hybrid, and Grid-tie solar solutions designed to meet unique commercial energy needs and reduce environmental impact." },
-						{ img: "assets/images/resource/service2.png", title: "Battery Energy Storage", desc: "Emergency backup, peak demand shaving to flatten utility fees, and full off-grid battery systems with environmental cooling." },
-						{ img: "assets/images/resource/service3.png", title: "Wind Energy Solutions", desc: "Robust resource assessment validated by the National Institute of Wind Energy (NIWE) with a track record of 100 MW in West Africa." },
-						{ img: "assets/images/resource/service1.png", title: "Mining Logistics", desc: "Specialized cargo shipping, ship chartering, and heavy-lift towage of mining floats, dollies, and trailers for large-scale operations." },
-						{ img: "assets/images/resource/service2.png", title: "Strategic Prefeasibility", desc: "Expert technical, commercial, and financial feasibility studies to develop optimized concepts and negotiate commercial Power Purchase Agreements (PPA)." },
-						{ img: "assets/images/resource/service3.png", title: "O&M / SCADA Systems", desc: "Advanced remote access monitoring and comprehensive lifecycle maintenance for PV plants to ensure peak performance and reliability." },
+						{ img: "assets/images/resource/service1.png", title: "1. Solar Energy Systems", desc: "Custom solar power solutions for commercial, industrial, and utility-scale applications." },
+						{ img: "assets/images/resource/service2.png", title: "2. Wind Power Infrastructure", desc: "Efficient wind energy systems designed for long-term performance and sustainability." },
+						{ img: "assets/images/resource/service3.png", title: "3. Battery Energy Storage", desc: "Advanced storage systems for grid stability, backup power, and energy optimization." },
+						{ img: "assets/images/resource/service1.png", title: "4. Industrial Power Operations", desc: "Reliable plant operations, maintenance, and performance management." },
+						{ img: "assets/images/resource/service2.png", title: "5. Engineering & Technical Consulting", desc: "Strategic guidance for energy planning, design, compliance, and execution." },
+						{ img: "assets/images/resource/service3.png", title: "6. EPC Project Support", desc: "End-to-end engineering, procurement, and construction management solutions." },
 					].map((service, index) => (
 						<div className="col-lg-4 col-md-6" key={index}>
 							<div className="service-box style-two">
@@ -102,7 +102,7 @@ function Services() {
 										<div className="service-text">
 											<h4><Link to="/contact">{service.title}</Link></h4>
 											<p>{service.desc}</p>
-											<Link to="/contact">Read More <i className="bi bi-arrow-up-right"></i></Link>
+											<Link to="/contact">Explore Solutions <i className="bi bi-arrow-up-right"></i></Link>
 										</div>
 									</div>
 								</div>
@@ -145,11 +145,11 @@ function Services() {
 								<h4>Why Choose Us</h4>
 							</div>
 							<div className="section-main-title choose">
-								<h2>Best Solution For Your</h2>
+								<h2>Powering the Future Through Smart Energy Solutions</h2>
 							</div>
 						</div>
 						<div className="choose-us-discription">
-							<p>Electricity from wind and solar is the fastest growing method of power generation. Since it requires no fuel and does not pollute, it is a sustainable power source that Sierra Leone is uniquely positioned to harness. Our solutions are based on robust resource assessment, efficient engineering and strong collaborations.</p>
+							<p>TechOps Global is a forward-thinking energy solutions company committed to building reliable and sustainable power systems for businesses, communities, and governments. We combine technical excellence with strategic execution to deliver measurable results.</p>
 						</div>
 						<div className="choose-us-content">
 							<div className="choose-us-thumb">
@@ -157,9 +157,12 @@ function Services() {
 							</div>
 							<div className="choose-us-list">
 								<ul>
-									<li><i className="bi bi-check"></i> 100 MW Wind Power Track Record</li>
-									<li><i className="bi bi-check"></i> National Institute Validated Data</li>
-									<li><i className="bi bi-check"></i> Power Evacuation & Land Procurement</li>
+									<li><i className="bi bi-check"></i> Experienced Industry Leadership</li>
+									<li><i className="bi bi-check"></i> Proven Project Delivery</li>
+									<li><i className="bi bi-check"></i> Safety & Compliance Focused</li>
+									<li><i className="bi bi-check"></i> Innovative Clean Energy Solutions</li>
+									<li><i className="bi bi-check"></i> Cost-Efficient Operations</li>
+									<li><i className="bi bi-check"></i> Global Expertise with Local Execution</li>
 								</ul>
 							</div>
 							<div className="choose-us-info">
@@ -192,7 +195,7 @@ function Services() {
 									</div>
 									<div className="col-lg-12">
 										<div className="form-box">
-											<input type="text" name="email" placeholder="Email Here *" />
+											<input type="text" name="email" placeholder="Email Address *" />
 											<i className="bi bi-envelope"></i>
 										</div>
 									</div>
@@ -211,13 +214,13 @@ function Services() {
 									</div>
 									<div className="col-lg-12 col-md-12">
 										<div className="form-box">
-											<textarea name="massage" id="massage" cols="30" rows="10" placeholder="Your Comment *"></textarea>
+											<textarea name="message" id="massage" cols="30" rows="10" placeholder="Your Message *"></textarea>
 											<i className="bi bi-chat-left-text-fill"></i>
 										</div>
 									</div>
 									<div className="col-lg-12 col-md-12">
 										<div className="form-box-button">
-											<button type="Submit">Appointment Now <i className="bi bi-arrow-right"></i></button>
+											<button type="Submit">Schedule Appointment <i className="bi bi-arrow-right"></i></button>
 										</div>
 									</div>
 								</div>
@@ -241,8 +244,8 @@ function Services() {
 					<div className="col-lg-6 col-md-6">
 						<div className="section-title">
 							<div className="section-main-title Subscribe">
-								<h2>Subscribe For The </h2>
-								<h2>Exclusive</h2>
+								<h2>Subscribe For </h2>
+								<h2>Exclusive Updates</h2>
 							</div>
 						</div>
 					</div>

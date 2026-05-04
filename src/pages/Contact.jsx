@@ -62,7 +62,7 @@ function Contact() {
 								<h2>Get In Touch!</h2>
 							</div>
 							<div className="contact-discription">
-								<p>Reach out to us to learn how we can power your growth with sustainable energy solutions.</p>
+								<p>Let’s discuss your project goals and energy needs. Partner with TechOps Global for dependable solutions in solar, wind, storage, and industrial operations.</p>
 							</div>
 						</div>
 
@@ -152,13 +152,13 @@ function Contact() {
 									</div>
 									<div className="col-lg-12 col-md-12">
 										<div className="form-box contact-inner">
-											<textarea name="massage" id="contact-massage" cols="30" rows="10" placeholder="Write your question here*"></textarea>
+											<textarea name="message" id="contact-message" cols="30" rows="10" placeholder="Write your question here*"></textarea>
 											<i className="bi bi-chat-left-text-fill"></i>
 										</div>
 									</div>
 									<div className="col-lg-12 col-md-12">
 										<div className="form-box-button contact-inner">
-											<button type="submit">Send Messages</button>
+											<button type="submit">Send Message</button>
 										</div>
 									</div>
 								</div>

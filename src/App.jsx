@@ -135,7 +135,7 @@ function Layout() {
                 <Link to="/"><img src={logoImg} alt="TechOps Global Logo" style={{maxHeight:'60px', width:'auto', borderRadius: '6px', display: 'block', overflow: 'hidden'}} loading="lazy" /></Link>
               </div>
               <div className="footer-wiget-text">
-                <p>TechOps Global delivers scalable, technology-driven solutions for governments, utilities, and industries across the USA, Dubai, and Sierra Leone.</p>
+                <p>TechOps Global is a forward-thinking energy solutions company committed to building reliable and sustainable power systems for businesses, communities, and governments.</p>
               </div>
               <div className="footer-wiget-social">
                 <ul>
@@ -187,7 +187,8 @@ function Layout() {
         <div className="row footer-line">
           <div className="col-lg-12">
             <div className="copyright-text text-center">
-              <p>&copy; {new Date().getFullYear()} TechOps Global. All rights reserved.</p>
+              <p>TechOps Global © 2026 All Rights Reserved</p>
+              <p style={{ marginTop: '10px', fontSize: '0.9rem', opacity: 0.8 }}>Renewable Energy | Industrial Power | Infrastructure Solutions</p>
             </div>
           </div>
         </div>

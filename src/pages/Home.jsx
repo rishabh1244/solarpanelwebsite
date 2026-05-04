@@ -4,24 +4,24 @@ import { Link } from "react-router-dom";
 const heroSlides = [
 	{
 		img: '/img/business-solution-2026-03-10-02-05-05-utc.JPG',
-		subtitle: 'Our Solar Systems',
-		title1: 'Energize Society By',
-		title2: 'Reliable Energy',
-		desc: 'Universal energy access is critical for economic growth. TechOps Global is committed to supplying 1–4.5 GW of sustainable power to Sierra Leone through strategic infrastructure and technology partnerships.',
+		subtitle: 'Renewable Energy Solutions',
+		title1: 'Powering the Future Through',
+		title2: 'Smart Energy Solutions',
+		desc: 'TechOps Global delivers reliable solar, wind, battery storage, and industrial power solutions designed to drive efficiency, sustainability, and long-term growth.',
 	},
 	{
 		img: '/img/concept-of-an-energy-storage-system-based-on-elect-2026-03-24-07-19-07-utc.jpg',
-		subtitle: 'Energy Storage',
-		title1: 'Advanced Energy',
-		title2: 'Storage Solutions',
-		desc: 'Cutting-edge battery energy storage systems enabling peak demand shaving, emergency backup, and full off-grid independence for industrial and utility-scale operations.',
+		subtitle: 'Advanced Technology',
+		title1: 'Reliable Solar, Wind &',
+		title2: 'Energy Storage Solutions',
+		desc: 'TechOps Global delivers advanced energy infrastructure across the USA and international markets, specializing in utility-scale systems and industrial operations.',
 	},
 	{
 		img: '/img/low-angle-shot-of-a-group-of-businesspeople-joinin-2026-01-09-09-45-09-utc.jpg',
-		subtitle: 'Business Partnerships',
-		title1: 'Building Stronger',
-		title2: 'Business Solutions',
-		desc: 'TechOps Global forges strategic partnerships with governments, utilities, and industrial operators across West Africa to deliver bankable, scalable clean energy solutions.',
+		subtitle: 'Sustainable Growth',
+		title1: 'Clean Energy Infrastructure',
+		title2: 'For a Sustainable Tomorrow',
+		desc: 'We combine technical excellence with strategic execution to help organizations transition toward cleaner, smarter, and more efficient energy systems.',
 	},
 ];
 
@@ -33,6 +33,17 @@ function Home() {
 	// Re-initialize jQuery theme plugins when this page mounts
 	useEffect(() => {
 		window.scrollTo(0, 0);
+		document.title = "TechOps Global | Solar, Wind & Energy Storage Solutions USA";
+		const setMetaTag = (attrName, attrValue, content) => {
+			let element = document.querySelector(`meta[${attrName}="${attrValue}"]`);
+			if (!element) {
+				element = document.createElement('meta');
+				element.setAttribute(attrName, attrValue);
+				document.head.appendChild(element);
+			}
+			element.setAttribute('content', content);
+		};
+		setMetaTag('name', 'description', 'TechOps Global provides renewable energy, solar power, wind systems, battery storage, and industrial infrastructure solutions across the USA and global markets.');
 	}, []);
 
 	useEffect(() => {
@@ -72,10 +83,10 @@ function Home() {
 									<h1>{slide.title2}</h1>
 									<p>{slide.desc}</p>
 									<div className="solar-btn slider1">
-										<Link to="/services">Our Service <i className="bi bi-arrow-right"></i></Link>
+										<Link to="/services">Explore Solutions <i className="bi bi-arrow-right"></i></Link>
 									</div>
 									<div className="solar-btn slider2">
-										<Link to="/about">More About! <i className="bi bi-arrow-right"></i></Link>
+										<Link to="/contact">Request Consultation <i className="bi bi-arrow-right"></i></Link>
 									</div>
 								</div>
 							</div>
@@ -105,6 +116,18 @@ function Home() {
 		</div>
 		{/*==================================================*/}
 		{/*End Solar Panel Hero Section  */}
+		{/*==================================================*/}
+
+		{/*==================================================*/}
+		{/* Start Trust Bar Section */}
+		{/*==================================================*/}
+		<div className="trust-bar-section" style={{ backgroundColor: '#fba500', padding: '20px 0', textAlign: 'center' }}>
+			<div className="container">
+				<h4 style={{ margin: 0, color: '#fff', fontSize: '20px', fontWeight: '600' }}>Trusted Expertise in Renewable Energy, Infrastructure & Industrial Operations</h4>
+			</div>
+		</div>
+		{/*==================================================*/}
+		{/* End Trust Bar Section */}
 		{/*==================================================*/}
 
 
@@ -145,10 +168,10 @@ function Home() {
 					<div className="col-lg-6 col-md-12">
 						<div className="about-section-title">
 							<div className="about-section-sub-title ">
-								<h4>Our Introduction</h4>
+								<h4>About TechOps Global</h4>
 							</div>
 							<div className="about-section-main-title ">
-								<h2>TechOps Global is shaping the future of solar energy </h2>
+								<h2>Powering the Future Through Smart Energy Solutions</h2>
 							</div>
 						</div>
 						{/* tab */}
@@ -164,7 +187,7 @@ function Home() {
 								<div className="tabs_item" >
 									<div className="tabs-items-content">
 										<div className="about-content-discription ">
-											<p>TechOps Global is a global infrastructure and technology partner committed to developing bankable, scalable projects across energy, utilities, and industrial sectors. Operating in the USA, Dubai, and Sierra Leone, we enable governments and enterprises to build future-ready infrastructure with strong financial viability and long-term impact.</p>
+											<p>TechOps Global is a forward-thinking energy solutions company committed to building reliable and sustainable power systems for businesses, communities, and governments. We specialize in renewable energy development, industrial operations, engineering support, and advanced infrastructure solutions across domestic and international markets.</p>
 										</div>
 										<div className="row">
 											<div className="col-lg-6 col-md-6 col-sm-6 col-6">
@@ -195,7 +218,7 @@ function Home() {
 								<div className="tabs_item" style={{ display: 'none' }}>
 									<div className="tabs-items-content">
 										<div className="about-content-discription">
-											<p>Our mission is to provide 1 – 4.5 GW of power to Sierra Leone, enhancing economic development and job opportunities through large-scale renewable infrastructure and localized technical training.</p>
+											<p>Our mission is to help organizations transition toward cleaner, smarter, and more efficient energy systems. We combine technical excellence with strategic execution to deliver measurable results and long-term value.</p>
 										</div>
 										<div className="row">
 											<div className="col-lg-6 col-md-6">
@@ -226,7 +249,7 @@ function Home() {
 								<div className="tabs_item" style={{ display: 'none' }}>
 									<div className="tabs-items-content">
 										<div className="about-content-discription">
-											<p>We aim to become the trusted clean energy partner for West Africa, harmonizing equipment standards and synchronizing renewable systems nationwide for universal energy access.</p>
+											<p>We aim to be the global leader in sustainable energy infrastructure, driving innovation and efficiency in every project we deliver. Our vision is a world powered by reliable, clean energy for a sustainable tomorrow.</p>
 										</div>
 										<div className="row">
 											<div className="col-lg-6 col-md-6">
@@ -273,10 +296,10 @@ function Home() {
 					<div className="col-lg-12">
 						<div className="section-title text-center">
 							<div className="section-sub-title ">
-								<h4>Our Most Service</h4>
+								<h4>Our Solutions</h4>
 							</div>
 							<div className="section-main-title ">
-								<h2>Provide Solar Solution</h2>
+								<h2>Comprehensive Energy & Infrastructure Services</h2>
 							</div>
 						</div>
 					</div>
@@ -288,9 +311,9 @@ function Home() {
 								<img src="assets/images/resource/service1.png" alt=""  loading="lazy" />
 								<div className="service-content">
 									<div className="service-text">
-										<h4><Link to="/contact">Commercial Solar</Link></h4>
-										<p>Tailored Off-grid, Hybrid, and Grid-tie solar solutions designed to meet unique commercial energy needs.</p>
-										<Link to="/contact">Read More <i className="bi bi-arrow-up-right"></i></Link>
+										<h4><Link to="/contact">1. Solar Energy Systems</Link></h4>
+										<p>Custom solar power solutions for commercial, industrial, and utility-scale applications.</p>
+										<Link to="/contact">Explore Solutions <i className="bi bi-arrow-up-right"></i></Link>
 									</div>
 								</div>
 							</div>
@@ -302,9 +325,9 @@ function Home() {
 								<img src="assets/images/resource/service2.png" alt=""  loading="lazy" />
 								<div className="service-content">
 									<div className="service-text">
-										<h4><Link to="/contact">Battery storage</Link></h4>
-										<p>Emergency backup, peak demand shaving, and full off-grid battery systems with environmental cooling.</p>
-										<Link to="/contact">Read More <i className="bi bi-arrow-up-right"></i></Link>
+										<h4><Link to="/contact">2. Wind Power Infrastructure</Link></h4>
+										<p>Efficient wind energy systems designed for long-term performance and sustainability.</p>
+										<Link to="/contact">Explore Solutions <i className="bi bi-arrow-up-right"></i></Link>
 									</div>
 								</div>
 							</div>
@@ -316,9 +339,9 @@ function Home() {
 								<img src="assets/images/resource/service3.png" alt=""  loading="lazy" />
 								<div className="service-content">
 									<div className="service-text">
-										<h4><Link to="/contact">Wind Energy</Link></h4>
-										<p>Resource assessment validated by NIWE with a track record of commissioning 100 MW in West Africa.</p>
-										<Link to="/contact">Read More <i className="bi bi-arrow-up-right"></i></Link>
+										<h4><Link to="/contact">3. Battery Energy Storage</Link></h4>
+										<p>Advanced storage systems for grid stability, backup power, and energy optimization.</p>
+										<Link to="/contact">Explore Solutions <i className="bi bi-arrow-up-right"></i></Link>
 									</div>
 								</div>
 							</div>
@@ -342,16 +365,16 @@ function Home() {
 					<div className="col-lg-7 col-md-6">
 						<div className="section-title ">
 							<div className="section-main-title contact-us">
-								<h2>How We Create Solar Energy</h2>
+								<h2>Ready to Build the Future of Energy?</h2>
 							</div>
 						</div>
 						<div className="contact-us-discription ">
-							<p>Building &amp; Maintaining The Energy</p>
+							<p>Partner with TechOps Global for dependable solutions in solar, wind, storage, and industrial operations.</p>
 						</div>
 					</div>
 					<div className="col-lg-3 col-md-6">
 						<div className="solar-btn contact-us ">
-							<Link to="/contact">Contact Now <i className="bi bi-arrow-right"></i></Link>
+							<Link to="/contact">Request Consultation <i className="bi bi-arrow-right"></i></Link>
 						</div>
 					</div>
 				</div>
@@ -374,8 +397,8 @@ function Home() {
 								<h4>Our Pricing Table</h4>
 							</div>
 							<div className="section-main-title pricing ">
-								<h2>Want to Ask Something</h2>
-								<h2>from Us?</h2>
+								<h2>Have Questions</h2>
+								<h2>For Us?</h2>
 							</div>
 						</div>
 						{/* Start Accordion */}
@@ -465,11 +488,11 @@ function Home() {
 								<h4>Why Choose Us</h4>
 							</div>
 							<div className="section-main-title home">
-								<h2>Our Expert Renewable</h2>
-								<h2>Energy Strategy</h2>
+								<h2>Why Businesses Choose</h2>
+								<h2>TechOps Global</h2>
 							</div>
 							<div className="about-discription">
-								<p>TechOps Global conducts comprehensive technical, commercial, and financial pre-feasibility and feasibility analyses for its partners. We develop optimized engineering solutions and lead the negotiation of bankable Power Purchase Agreements (PPAs), ensuring high reliability, performance, and long-term sustainability of solar energy projects.</p>
+								<p>Our leadership team brings decades of expertise in power generation, engineering, renewable energy, infrastructure development, and industrial operations. We combine technical excellence with strategic execution to deliver measurable results.</p>
 							</div>
 						</div>
 						<div className="choose-us-content ">
@@ -478,9 +501,12 @@ function Home() {
 							</div>
 							<div className="choose-us-list">
 								<ul>
-									<li><i className="bi bi-check"></i> Resource Assessment</li>
-									<li><i className="bi bi-check"></i> Efficient Engineering</li>
-									<li><i className="bi bi-check"></i> Strong Collaborations</li>
+									<li><i className="bi bi-check"></i> Experienced Industry Leadership</li>
+									<li><i className="bi bi-check"></i> Proven Project Delivery</li>
+									<li><i className="bi bi-check"></i> Safety & Compliance Focused</li>
+									<li><i className="bi bi-check"></i> Innovative Clean Energy Solutions</li>
+									<li><i className="bi bi-check"></i> Cost-Efficient Operations</li>
+									<li><i className="bi bi-check"></i> Global Expertise with Local Execution</li>
 								</ul>
 							</div>
 							<div className="choose-us-info">
@@ -513,7 +539,7 @@ function Home() {
 									</div>
 									<div className="col-lg-12">
 										<div className="form-box">
-											<input type="text" name="email" placeholder="Email Here *" />
+											<input type="text" name="email" placeholder="Email Address *" />
 											<i className="bi bi-envelope"></i>
 										</div>
 									</div>
@@ -532,13 +558,13 @@ function Home() {
 									</div>
 									<div className="col-lg-12 col-md-12">
 										<div className="form-box">
-											<textarea name="massage" id="massage" cols="30" rows="10" placeholder="Your Comment *"></textarea>
+											<textarea name="message" id="message" cols="30" rows="10" placeholder="Your Message *"></textarea>
 											<i className="bi bi-chat-left-text-fill"></i>
 										</div>
 									</div>
 									<div className="col-lg-12 col-md-12">
 										<div className="form-box-button">
-											<button type="Submit">Appointment Now <i className="bi bi-arrow-right"></i></button>
+											<button type="Submit">Schedule Appointment <i className="bi bi-arrow-right"></i></button>
 										</div>
 									</div>
 								</div>
@@ -564,10 +590,10 @@ function Home() {
 					<div className="col-lg-8 col-md-6 col-sm-12">
 						<div className="section-title">
 							<div className="section-sub-title protfolio">
-								<h4>What We Project</h4>
+								<h4>Featured Projects</h4>
 							</div>
 							<div className="section-main-title protfolio ">
-								<h2>Our Energy Project</h2>
+								<h2>Building High-Impact Energy Projects</h2>
 							</div>
 						</div>
 					</div>
@@ -647,7 +673,7 @@ function Home() {
 					<div className="col-lg-7 col-md-12">
 						<div className="section-title ">
 							<div className="section-sub-title offer">
-								<h4>What We Offer</h4>
+								<h4>Our Services</h4>
 							</div>
 							<div className="section-main-title offer">
 								<h2>Taking The Effort Out Of</h2>
@@ -658,58 +684,33 @@ function Home() {
 							<div className="col-lg-4 col-md-4 col-sm-6 col-6">
 								<div className="offer-items-box">
 									<div className="offer-card-image">
-										<img src="assets/images/resource/offer-battery.png" alt="Battery Storage"  loading="lazy" />
-									</div>
-									<div className="offer-icon-thumb">
-										<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 48 48" fill="none">
-											<rect x="6" y="12" width="30" height="24" rx="3" stroke="#e63a27" strokeWidth="3" fill="rgba(230,58,39,0.1)"/>
-											<rect x="36" y="19" width="6" height="10" rx="2" fill="#e63a27"/>
-											<polyline points="18,20 14,27 22,27 18,34" stroke="#e63a27" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-										</svg>
+										<img src="assets/images/resource/service1.png" alt="Industrial Power"  loading="lazy" />
 									</div>
 									<div className="offer-content">
-										<h4>Backup Systems</h4>
-										<p>Expand security around the clock for your most critical power loads at night.</p>
+										<h4>4. Industrial Power Operations</h4>
+										<p>Reliable plant operations, maintenance, and performance management.</p>
 									</div>
 								</div>
 							</div>
 							<div className="col-lg-4 col-md-4 col-sm-6 col-6">
 								<div className="offer-items-box">
 									<div className="offer-card-image">
-										<img src="assets/images/resource/offer-energy.png" alt="Energy Around"  loading="lazy" />
-									</div>
-									<div className="offer-icon-thumb">
-										<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 48 48" fill="none">
-											<circle cx="24" cy="24" r="8" fill="#f59c19" opacity="0.9"/>
-											<circle cx="24" cy="24" r="3.5" fill="#fff"/>
-											<line x1="24" y1="4" x2="24" y2="10" stroke="#f59c19" strokeWidth="2.5" strokeLinecap="round"/>
-											<line x1="24" y1="38" x2="24" y2="44" stroke="#f59c19" strokeWidth="2.5" strokeLinecap="round"/>
-											<line x1="4" y1="24" x2="10" y2="24" stroke="#f59c19" strokeWidth="2.5" strokeLinecap="round"/>
-											<line x1="38" y1="24" x2="44" y2="24" stroke="#f59c19" strokeWidth="2.5" strokeLinecap="round"/>
-										</svg>
+										<img src="assets/images/resource/service2.png" alt="Technical Consulting"  loading="lazy" />
 									</div>
 									<div className="offer-content">
-										<h4>Peak Shaving</h4>
-										<p>Flatten demand peaks by drawing from stored solar energy rather than grid energy.</p>
+										<h4>5. Technical Consulting</h4>
+										<p>Strategic guidance for energy planning, design, compliance, and execution.</p>
 									</div>
 								</div>
 							</div>
 							<div className="col-lg-4 col-md-4 col-sm-6 col-6">
 								<div className="offer-items-box">
 									<div className="offer-card-image">
-										<img src="assets/images/resource/offer-solar.png" alt="Solar PV Systems"  loading="lazy" />
-									</div>
-									<div className="offer-icon-thumb">
-										<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 48 48" fill="none">
-											<path d="M8 24 L24 10 L40 24 L38 24 L38 40 L10 40 L10 24 Z" stroke="#e63a27" strokeWidth="2.5" fill="rgba(230,58,39,0.08)" strokeLinejoin="round"/>
-											<rect x="16" y="16" width="7" height="5" rx="1" fill="#e63a27" opacity="0.8"/>
-											<rect x="25" y="16" width="7" height="5" rx="1" fill="#e63a27" opacity="0.8"/>
-											<circle cx="24" cy="6" r="2.5" fill="#f59c19"/>
-										</svg>
+										<img src="assets/images/resource/service3.png" alt="EPC Support"  loading="lazy" />
 									</div>
 									<div className="offer-content">
-										<h4>Full Off-Grid</h4>
-										<p>Advanced systems including cooling and backup generators for remote utility independence.</p>
+										<h4>6. EPC Project Support</h4>
+										<p>End-to-end engineering, procurement, and construction management solutions.</p>
 									</div>
 								</div>
 							</div>
@@ -859,8 +860,8 @@ function Home() {
 					<div className="col-lg-6 col-md-6">
 						<div className="section-title ">
 							<div className="section-main-title Subscribe">
-								<h2>Subscribe For The </h2>
-								<h2>Exclusive</h2>
+								<h2>Subscribe For </h2>
+								<h2>Exclusive Updates</h2>
 							</div>
 						</div>
 					</div>

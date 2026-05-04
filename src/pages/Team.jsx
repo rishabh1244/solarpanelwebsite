@@ -69,7 +69,10 @@ function Team() {
 								<h4>Our Team Members</h4>
 							</div>
 							<div className="section-main-title ">
-								<h2>Meet Experience Team</h2>
+								<h2>Meet Our Experienced Team</h2>
+							</div>
+							<div className="team-discription mt-3">
+								<p>Our leadership team brings decades of expertise in power generation, engineering, renewable energy, infrastructure development, and industrial operations. We combine technical excellence with strategic execution to deliver measurable results.</p>
 							</div>
 						</div>
 					</div>
@@ -117,8 +120,8 @@ function Team() {
 					<div className="col-lg-6 col-md-6">
 						<div className="section-title">
 							<div className="section-main-title Subscribe">
-								<h2>Subscribe For The </h2>
-								<h2>Exclusive</h2>
+								<h2>Subscribe For </h2>
+								<h2>Exclusive Updates</h2>
 							</div>
 						</div>
 					</div>

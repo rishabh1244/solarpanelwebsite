@@ -19,7 +19,7 @@ function About() {
 
 	// Set dynamic SEO Meta Tags for About Page
 	useEffect(() => {
-		document.title = "Techops Global LLC | Best Solar Energy Solution Company in Sierra Leone";
+		document.title = "TechOps Global | Solar, Wind & Energy Storage Solutions USA";
 
 		const setMetaTag = (attrName, attrValue, content) => {
 			let element = document.querySelector(`meta[${attrName}="${attrValue}"]`);
@@ -31,9 +31,9 @@ function About() {
 			element.setAttribute('content', content);
 		};
 
-		setMetaTag('name', 'title', 'Techops Global LLC | Best Solar Energy Solution Company in Sierra Leone ');
-		setMetaTag('name', 'description', 'TechOps Global delivers advanced solar, wind, and battery energy storage solutions for commercial and industrial projects across the USA. Reliable, scalable, and cost-efficient clean energy systems.');
-		setMetaTag('name', 'keywords', 'industrial solar energy storage solutions in Sierra Leone, solar energy solution Maryland, solar energy solution  Sierra Leone, mini grid solar solutions  Sierra Leone, solar plus storage solutions for industries  Sierra Leone, solar energy company in sierra Leone ');
+		setMetaTag('name', 'title', 'TechOps Global | Solar, Wind & Energy Storage Solutions USA');
+		setMetaTag('name', 'description', 'TechOps Global provides renewable energy, solar power, wind systems, battery storage, and industrial infrastructure solutions across the USA and global markets.');
+		setMetaTag('name', 'keywords', 'TechOps Global about, clean energy solutions company, renewable energy development, industrial power solutions, solar energy USA');
 		setMetaTag('name', 'robots', 'index, follow');
 		setMetaTag('http-equiv', 'Content-Type', 'text/html; charset=utf-8');
 		setMetaTag('name', 'language', 'English');
@@ -84,7 +84,7 @@ function About() {
 										<span>+</span>
 									</div>
 									<div className="about-text">
-										<h5>Years Exprience</h5>
+										<h5>Years Experience</h5>
 									</div>
 								</div>
 							</div>
@@ -103,10 +103,10 @@ function About() {
 					<div className="col-lg-6 col-md-12">
 						<div className="about-section-title">
 							<div className="about-section-sub-title">
-								<h4>Our Introduction</h4>
+								<h4>About TechOps Global</h4>
 							</div>
 							<div className="about-section-main-title">
-								<h2>TechOps Global is shaping the future of solar energy </h2>
+								<h2>Powering the Future Through Smart Energy Solutions</h2>
 							</div>
 						</div>
 						{/* tab */}
@@ -120,7 +120,7 @@ function About() {
 								<div className="tabs_item">
 									<div className="tabs-items-content">
 										<div className="about-content-discription">
-											<p>TechOps-Global & Cabellos-Pancho has provided project management of mega solar energy projects among others ($100 million plus) in Pakistan and North America. TechOps-Global Sierra Leone’s mission is not only to provide a viable source of renewable energy to the Country; but also, to enhance economic development and job opportunities for the areas near our Solar PV Power projects.</p>
+											<p>TechOps Global is a forward-thinking energy solutions company committed to building reliable and sustainable power systems for businesses, communities, and governments. We specialize in renewable energy development, industrial operations, engineering support, and advanced infrastructure solutions across domestic and international markets.</p>
 										</div>
 										<div className="row">
 											<div className="col-lg-6 col-md-6 col-sm-6 col-6">
@@ -150,7 +150,7 @@ function About() {
 								<div className="tabs_item" style={{ display: 'none' }}>
 									<div className="tabs-items-content">
 										<div className="about-content-discription">
-											<p>Our strategy centers on universal energy access by supplying 1–4.5 GW of power. We are setting up an Integrated Manufacturing Unit in Sierra Leone to localize sustainable technology and reduce national dependence on non-clean fuels.</p>
+											<p>Our mission is to help organizations transition toward cleaner, smarter, and more efficient energy systems. We combine technical excellence with strategic execution to deliver measurable results and long-term value for our partners and the communities we serve.</p>
 										</div>
 										<div className="row">
 											<div className="col-lg-6 col-md-6 col-sm-6 col-6">
@@ -180,7 +180,7 @@ function About() {
 								<div className="tabs_item" style={{ display: 'none' }}>
 									<div className="tabs-items-content">
 										<div className="about-content-discription">
-											<p>Techops Global conducts technical, commercial, and financial prefeasibility & feasibility studies. We specialize in negotiating Power Purchase Agreements (PPA) and incorporating O&M lifecycle considerations into designs for long-term reliability.</p>
+											<p>We aim to be the global leader in sustainable energy infrastructure, driving innovation and efficiency in every project we deliver. Our vision is a world powered by reliable, clean energy for a sustainable tomorrow.</p>
 										</div>
 										<div className="row">
 											<div className="col-lg-6 col-md-6 col-sm-6 col-6">
@@ -226,10 +226,10 @@ function About() {
 					<div className="col-lg-12">
 						<div className="section-title text-center">
 							<div className="section-sub-title">
-								<h4>Our Most Service</h4>
+								<h4>Our Core Services</h4>
 							</div>
 							<div className="section-main-title">
-								<h2>Provide Solar Solution</h2>
+								<h2>Comprehensive Solar Solutions</h2>
 							</div>
 						</div>
 					</div>
@@ -244,7 +244,7 @@ function About() {
 									<div className="service-text">
 										<h4><Link to="/contact">Commercial Solar</Link></h4>
 										<p>Large-scale solar integration for industrial campuses, utility farms, and corporate infrastructure.</p>
-										<Link to="/contact">Read More <i className="bi bi-arrow-up-right"></i></Link>
+										<Link to="/contact">Explore Solutions <i className="bi bi-arrow-up-right"></i></Link>
 									</div>
 								</div>
 							</div>
@@ -259,7 +259,7 @@ function About() {
 									<div className="service-text">
 										<h4><Link to="/contact">Off-Grid Systems</Link></h4>
 										<p>Specialized standalone energy systems for remote facilities without access to the national grid.</p>
-										<Link to="/contact">Read More <i className="bi bi-arrow-up-right"></i></Link>
+										<Link to="/contact">Explore Solutions <i className="bi bi-arrow-up-right"></i></Link>
 									</div>
 								</div>
 							</div>
@@ -274,7 +274,7 @@ function About() {
 									<div className="service-text">
 										<h4><Link to="/contact">Energy Storage</Link></h4>
 										<p>Industrial battery energy storage systems (BESS) for peak shaving and emergency backup power.</p>
-										<Link to="/contact">Read More <i className="bi bi-arrow-up-right"></i></Link>
+										<Link to="/contact">Explore Solutions <i className="bi bi-arrow-up-right"></i></Link>
 									</div>
 								</div>
 							</div>
@@ -301,7 +301,7 @@ function About() {
 							</div>
 						</div>
 						<div className="contact-us-discription">
-							<p>Building &amp; Maintaining The Energy</p>
+							<p>Building &amp; Maintaining Sustainable Energy Systems</p>
 						</div>
 					</div>
 					<div className="col-lg-3 col-md-6">
@@ -325,10 +325,13 @@ function About() {
 					<div className="col-lg-12">
 						<div className="section-title text-center">
 							<div className="section-sub-title">
-								<h4>Our Team Members</h4>
+								<h4>Our Team</h4>
 							</div>
 							<div className="section-main-title ">
-								<h2>Meet Experience Team</h2>
+								<h2>Meet Our Experienced Team</h2>
+							</div>
+							<div className="team-discription mt-3">
+								<p>Our leadership team brings decades of expertise in power generation, engineering, renewable energy, infrastructure development, and industrial operations. We combine technical excellence with strategic execution to deliver measurable results.</p>
 							</div>
 						</div>
 					</div>
@@ -355,9 +358,7 @@ function About() {
 											<li><Link to="/contact"><i className="fab fa-instagram"></i></Link></li>
 										</ul>
 									</div>
-									<div className="team-main-icon">
-										<Link to={member.profileLink || "/contact"}><i className="bi bi-plus"></i></Link>
-									</div>
+
 									<div className="team-content">
 										<h4><Link to={member.profileLink || "/contact"}>{member.name}</Link></h4>
 										<span>{member.role}</span>
@@ -421,8 +422,8 @@ function About() {
 					<div className="col-lg-6 col-md-6">
 						<div className="section-title">
 							<div className="section-main-title Subscribe">
-								<h2>Subscribe For The </h2>
-								<h2>Exclusive</h2>
+								<h2>Subscribe For </h2>
+								<h2>Exclusive Updates</h2>
 							</div>
 						</div>
 					</div>
