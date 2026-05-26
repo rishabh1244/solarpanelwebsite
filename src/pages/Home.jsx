@@ -12,14 +12,14 @@ function Home() {
     <div className="home-dark-theme">
       {/* Hero Section */}
       <section className="hero-wrapper">
-        <div className="container">
+        <div className="container-fluid px-4 px-xxl-5">
           <div className="row align-items-center">
             <div className="col-lg-7 col-md-12">
               <div className="hero-content">
                 <h5 className="text-orange mb-3" style={{ letterSpacing: '1px', fontWeight: '700', fontSize: '0.85rem' }}>
                   AI POWER. REAL ESTATE. REAL REVENUE.
                 </h5>
-                <h1>Turn Your PJM<br />Real Estate Footprint<br />into a <span className="text-orange">Zero-Capex</span><br />Revenue Engine.</h1>
+                <h1 className="text-white">Turn Your PJM<br />Real Estate Footprint<br />into a <span className="text-orange">Zero-Capex<br />Revenue Engine.</span></h1>
                 <p>
                   Monetize your unused warehouse rooftops, vacant acreage, and parking lots in Pennsylvania, <strong className="text-white">New Jersey</strong>, and <strong className="text-white">Maryland</strong>. We deploy behind-the-meter solar and battery storage systems at <strong className="text-white">zero cost</strong> to you, driving immediate energy savings and massive grid-balancing cash flow.
                 </p>
@@ -70,77 +70,79 @@ function Home() {
 
       {/* Dual-Benefit Framework */}
       <section className="dual-benefit-section">
-        <div className="container">
-          <div className="section-header-line">
-            <span>THE DUAL-BENEFIT FRAMEWORK</span>
-          </div>
-          
-          <div className="row align-items-center justify-content-center">
-            <div className="col-lg-5">
-              <div className="db-box">
-                <div className="db-icon">
-                  <i className="bi bi-currency-dollar"></i>
-                </div>
-                <div>
-                  <h6 className="text-green mb-2 fw-bold" style={{letterSpacing: '0.5px'}}>1. GUARANTEED LEASE INCOME</h6>
-                  <p className="text-gray mb-0" style={{fontSize: '0.95rem'}}>Predictable land/roof rental payments<br/>over a 15–20 year term.</p>
-                </div>
-              </div>
+        <div className="container-fluid px-4 px-xxl-5">
+          <div className="db-outer-box">
+            <div className="db-outer-title">
+              THE DUAL-BENEFIT FRAMEWORK
             </div>
             
-            <div className="col-lg-2 text-center my-4 my-lg-0">
-              <div className="db-plus">
-                <i className="bi bi-plus-lg"></i>
+            <div className="row align-items-center justify-content-center px-lg-4 pt-5 pb-4">
+              <div className="col-lg-5">
+                <div className="db-box">
+                  <div className="db-icon">
+                    <i className="bi bi-currency-dollar"></i>
+                  </div>
+                  <div>
+                    <h6 className="text-green mb-2 fw-bold" style={{letterSpacing: '0.5px'}}>1. GUARANTEED LEASE INCOME</h6>
+                    <p className="text-gray mb-0" style={{fontSize: '0.95rem'}}>Predictable land/roof rental payments<br/>over a 15–20 year term.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="col-lg-2 text-center my-4 my-lg-0">
+                <div className="db-plus">
+                  <i className="bi bi-plus-lg"></i>
+                </div>
+              </div>
+
+              <div className="col-lg-5">
+                <div className="db-box">
+                  <div className="db-icon">
+                    <i className="bi bi-lightning-charge"></i>
+                  </div>
+                  <div>
+                    <h6 className="text-green mb-2 fw-bold" style={{letterSpacing: '0.5px'}}>2. BEHIND-THE-METER (BTM) PEAK SHAVING</h6>
+                    <p className="text-gray mb-0" style={{fontSize: '0.95rem'}}>Shield your facility from PJM's exploding<br/>capacity pass-through costs (30%+<br/>of corporate electric bills).</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="col-lg-5">
-              <div className="db-box">
-                <div className="db-icon">
-                  <i className="bi bi-lightning-charge"></i>
-                </div>
-                <div>
-                  <h6 className="text-green mb-2 fw-bold" style={{letterSpacing: '0.5px'}}>2. BEHIND-THE-METER (BTM) PEAK SHAVING</h6>
-                  <p className="text-gray mb-0" style={{fontSize: '0.95rem'}}>Shield your facility from PJM's exploding<br/>capacity pass-through costs (30%+<br/>of corporate electric bills).</p>
+            <div className="stats-row mx-lg-4">
+              <div className="stat-item">
+                <div className="stat-icon"><i className="bi bi-diagram-3"></i></div>
+                <div className="stat-text">
+                  <h4 className="text-white">$BILLIONS</h4>
+                  <p>in PJM market<br/>revenue potential</p>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div className="stats-row">
-            <div className="stat-item">
-              <div className="stat-icon"><i className="bi bi-diagram-3"></i></div>
-              <div className="stat-text">
-                <h4 className="text-white">$BILLIONS</h4>
-                <p>in PJM market<br/>revenue potential</p>
+              <div className="stat-item">
+                <div className="stat-icon"><i className="bi bi-bag"></i></div>
+                <div className="stat-text">
+                  <h4 className="text-white">0</h4>
+                  <p>Upfront cost<br/>to you</p>
+                </div>
               </div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-icon"><i className="bi bi-bag"></i></div>
-              <div className="stat-text">
-                <h4 className="text-white">0</h4>
-                <p>Upfront cost<br/>to you</p>
+              <div className="stat-item">
+                <div className="stat-icon"><i className="bi bi-calendar-event"></i></div>
+                <div className="stat-text">
+                  <h4 className="text-white">15-20 YEARS</h4>
+                  <p>Long-term predictable<br/>cash flow</p>
+                </div>
               </div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-icon"><i className="bi bi-calendar-event"></i></div>
-              <div className="stat-text">
-                <h4 className="text-white">15-20 YEARS</h4>
-                <p>Long-term predictable<br/>cash flow</p>
+              <div className="stat-item">
+                <div className="stat-icon"><i className="bi bi-clock-history"></i></div>
+                <div className="stat-text">
+                  <h4 className="text-white">100%</h4>
+                  <p>Turnkey development<br/>& operations</p>
+                </div>
               </div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-icon"><i className="bi bi-clock-history"></i></div>
-              <div className="stat-text">
-                <h4 className="text-white">100%</h4>
-                <p>Turnkey development<br/>& operations</p>
-              </div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-icon"><i className="bi bi-bounding-box-circles"></i></div>
-              <div className="stat-text">
-                <h4 className="text-white">24/7 AI</h4>
-                <p>Autonomous dispatch<br/>& performance</p>
+              <div className="stat-item">
+                <div className="stat-icon"><i className="bi bi-bounding-box-circles"></i></div>
+                <div className="stat-text">
+                  <h4 className="text-white">24/7 AI</h4>
+                  <p>Autonomous dispatch<br/>& performance</p>
+                </div>
               </div>
             </div>
           </div>
@@ -149,7 +151,7 @@ function Home() {
 
       {/* Tailored Solutions Section */}
       <section className="solutions-section">
-        <div className="container">
+        <div className="container-fluid px-4 px-xxl-5">
           <div className="section-header-left">
             <span>TAILORED SOLUTIONS FOR EVERY PROPERTY TYPE</span>
           </div>
@@ -238,7 +240,7 @@ function Home() {
 
       {/* How It Works / Dashboard Section */}
       <section className="dashboard-section">
-        <div className="container">
+        <div className="container-fluid px-4 px-xxl-5">
           <div className="row align-items-center">
             <div className="col-lg-4 mb-5 mb-lg-0 pe-lg-5">
               <h6 className="text-orange mb-3" style={{ letterSpacing: '1.5px', fontWeight: '700', fontSize: '0.8rem' }}>HOW IT WORKS</h6>

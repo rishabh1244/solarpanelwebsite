@@ -119,7 +119,7 @@ function Layout() {
     {/* Start Solar Panel  Footer  Section */}
     {/*==================================================*/} 
      <footer className="footer-section" style={{background: '#0b0c10', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '60px', paddingBottom: '20px', fontFamily: "'Inter', sans-serif"}}>
-      <div className="container">
+      <div className="container-fluid px-4 px-xxl-5">
         <div className="row mb-5">
           {/* Column 1: Logo & About */}
           <div className="col-lg-3 col-md-6 mb-4 mb-lg-0">
