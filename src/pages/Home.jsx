@@ -1,405 +1,615 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Menu, X, DollarSign, Activity, Zap, Plus,
+  Building, TreePine, CarFront, CheckCircle2,
+  LayoutDashboard, Box, TrendingUp, ShoppingCart,
+  FileText, Bell, Settings, CloudLightning, ChevronRight,
+  PlayCircle, Calendar, Clock, Share2, MapPin, AlertTriangle,
+  ArrowRight, Globe, Cpu, CreditCard, Gauge, ClipboardList, Leaf
+} from "lucide-react";
+import logoImg from "../assets/image.png";
 import "./Home.css";
 
-function Home() {
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { label: "Solutions", dropdown: true },
+    { label: "Property Types", dropdown: true },
+    { label: "How It Works", dropdown: false },
+    { label: "Markets", dropdown: false },
+    { label: "Resources", dropdown: true },
+    { label: "Company", dropdown: true },
+  ];
+
+  return (
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-black/95 backdrop-blur-md border-b border-white/5 py-0.5" : "bg-[#05070a]/80 backdrop-blur-sm border-b border-white/10 py-1"}`}>
+      <div className="container mx-auto px-6 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2">
+          <img src={logoImg} alt="TechOps Global" className="h-2 object-contain" />
+        </Link>
+        
+        {/* Desktop Links */}
+        <div className="hidden lg:flex items-center gap-7">
+          {navLinks.map((item) => (
+            <Link key={item.label} to="#" className="text-[12px] font-medium tracking-wide text-gray-300 hover:text-white transition-colors flex items-center gap-1">
+              {item.label} {item.dropdown && <ChevronRight size={12} className="rotate-90 opacity-60" />}
+            </Link>
+          ))}
+        </div>
+
+        {/* Right Nav */}
+        <div className="hidden lg:flex items-center gap-6">
+          <Link to="/contact" className="px-5 py-2 rounded text-[11px] font-bold tracking-wider border border-white/30 hover:border-white text-white transition-all duration-300">
+            GET SITE ASSESSMENT
+          </Link>
+          <button className="text-white hover:text-orange-500 transition-colors">
+            <Menu size={26} strokeWidth={1.5} />
+          </button>
+        </div>
+
+        {/* Mobile Toggle */}
+        <button className="lg:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-black/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+          >
+            <div className="px-6 py-6 flex flex-col gap-4">
+              {navLinks.map((item) => (
+                <Link key={item.label} to="#" className="text-lg font-medium text-gray-300 flex justify-between">
+                  {item.label} {item.dropdown && <ChevronRight size={18} className="opacity-60" />}
+                </Link>
+              ))}
+              <Link to="/contact" className="mt-4 px-6 py-3 text-center rounded border border-white/30 text-white font-bold">
+                GET SITE ASSESSMENT
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+};
+
+export default function Home() {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "TechOps Global | Zero-Capex Revenue Engine";
   }, []);
 
   return (
-    <div className="home-dark-theme">
-      {/* Hero Section */}
-      <section className="hero-wrapper">
-        <div className="container-fluid px-4 px-xxl-5">
-          <div className="row align-items-center">
-            <div className="col-lg-7 col-md-12">
-              <div className="hero-content">
-                <h5 className="text-orange mb-3" style={{ letterSpacing: '1px', fontWeight: '700', fontSize: '0.85rem' }}>
-                  AI POWER. REAL ESTATE. REAL REVENUE.
-                </h5>
-                <h1 className="text-white">Turn Your PJM<br />Real Estate Footprint<br />into a <span className="text-orange">Zero-Capex<br />Revenue Engine.</span></h1>
-                <p>
-                  Monetize your unused warehouse rooftops, vacant acreage, and parking lots in Pennsylvania, <strong className="text-white">New Jersey</strong>, and <strong className="text-white">Maryland</strong>. We deploy behind-the-meter solar and battery storage systems at <strong className="text-white">zero cost</strong> to you, driving immediate energy savings and massive grid-balancing cash flow.
-                </p>
-                <div className="d-flex flex-wrap gap-3 mt-4">
-                  <Link to="/contact" className="btn-orange">
-                    GET SITE ASSESSMENT <i className="bi bi-arrow-right"></i>
-                  </Link>
-                  <Link to="/services" className="btn-outline">
-                    SEE HOW IT WORKS <i className="bi bi-play-circle" style={{fontSize: '1.2rem'}}></i>
-                  </Link>
+    <div className="min-h-screen bg-[#05070a] text-white font-sans overflow-x-hidden selection:bg-[#ff7a00]/30 selection:text-[#ff7a00]">
+
+      {/* 1. HERO SECTION */}
+      <section className="relative min-h-[75vh] flex items-center pt-24 pb-16 lg:py-0 border-b border-white/5 overflow-hidden">
+        <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: "url('/assets/images/slider/slider2.jpg')" }}>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#05070a] via-[#05070a]/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05070a] via-transparent to-transparent"></div>
+          {/* Sunset glow effect on the right */}
+          <div className="absolute top-1/3 right-0 w-[500px] h-[300px] bg-[#ff7a00]/10 blur-[150px] rounded-full pointer-events-none"></div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            {/* Left Content */}
+            <motion.div variants={fadeUp} initial="hidden" animate="visible" className="lg:col-span-6 pt-24 lg:pt-32 lg:-ml-8 xl:-ml-16">
+              <div className="mb-4 text-[#ff7a00] text-sm lg:text-[15px] font-bold tracking-[4px] uppercase">
+                AI POWER. REAL ESTATE. REAL REVENUE.
+              </div>
+              <h1 className="text-5xl lg:text-[80px] font-bold leading-[1.05] tracking-wide mb-6 text-white">
+                Turn Your PJM<br/>Real Estate Footprint<br/>into a <span className="text-[#ff7a00]">Zero-Capex<br/>Revenue Engine.</span>
+              </h1>
+              <p className="text-lg lg:text-[22px] text-gray-300 mb-8 max-w-xl leading-relaxed font-light tracking-[0.5px]">
+                Monetize your unused warehouse rooftops, vacant acreage, and parking lots in Pennsylvania, <span className="text-white font-semibold">New Jersey</span>, and <span className="text-white font-semibold">Maryland</span>. We deploy behind-the-meter solar and battery storage systems at <span className="text-white font-semibold">zero cost</span> to you, driving immediate energy savings and massive grid-balancing cash flow.
+              </p>
+              <div className="flex flex-wrap items-center gap-5">
+                <Link to="/contact" className="px-10 py-4 rounded bg-[#ff7a00] hover:bg-[#ff8a1c] text-black font-bold tracking-widest transition-all flex items-center gap-2 text-[15px] uppercase">
+                  GET SITE ASSESSMENT <ArrowRight size={20} />
+                </Link>
+                <Link to="/about" className="px-10 py-4 rounded border border-white/30 hover:border-white text-white font-bold tracking-widest transition-all flex items-center gap-3 text-[15px] uppercase">
+                  SEE HOW IT WORKS <div className="w-6 h-6 rounded-full border border-white text-[#ff7a00] flex items-center justify-center bg-transparent"><div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-[8px] border-l-[#ff7a00] border-b-[5px] border-b-transparent ml-1"></div></div>
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right Feature Card */}
+            <motion.div 
+              initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
+              className="lg:col-span-4 lg:col-start-9 hidden md:block lg:mt-32 lg:ml-8 xl:ml-16"
+            >
+              <div className="bg-[#111318]/90 backdrop-blur-xl border border-white/5 rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+                <div className="flex flex-col gap-8">
+                  {/* ZERO CAPEX - Green */}
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-full border border-[#8dff4d]/30 text-[#8dff4d] flex items-center justify-center shrink-0">
+                      <DollarSign size={20} />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-bold mb-1 text-sm tracking-wide">ZERO CAPEX</h4>
+                      <p className="text-xs text-gray-400">We fund, build, own & operate.</p>
+                    </div>
+                  </div>
+                  
+                  {/* DUAL INCOME - Green */}
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-full border border-[#8dff4d]/30 text-[#8dff4d] flex items-center justify-center shrink-0">
+                      <Activity size={20} />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-bold mb-1 text-sm tracking-wide">DUAL INCOME STREAM</h4>
+                      <p className="text-xs text-gray-400">Lease income + Energy savings<br/>& market revenue.</p>
+                    </div>
+                  </div>
+                  
+                  {/* PJM MARKET - Orange */}
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-full border border-[#ff7a00]/30 text-[#ff7a00] flex items-center justify-center shrink-0">
+                      <Zap size={20} />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-bold mb-1 text-sm tracking-wide">PJM MARKET EXPOSURE</h4>
+                      <p className="text-xs text-gray-400">Tap into billions in grid-balancing<br/>opportunities.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-5 col-md-12 mt-5 mt-lg-0">
-              <div className="hero-panel">
-                <div className="hero-panel-item">
-                  <div className="hero-panel-icon green">
-                    <i className="bi bi-currency-dollar"></i>
-                  </div>
-                  <div>
-                    <h6 className="mb-1 fw-bold text-white" style={{fontSize: '0.95rem'}}>ZERO CAPEX</h6>
-                    <p className="mb-0 text-gray" style={{ fontSize: '0.85rem' }}>We fund, build, own & operate.</p>
-                  </div>
-                </div>
-                <div className="hero-panel-item">
-                  <div className="hero-panel-icon green">
-                    <i className="bi bi-bar-chart-fill"></i>
-                  </div>
-                  <div>
-                    <h6 className="mb-1 fw-bold text-white" style={{fontSize: '0.95rem'}}>DUAL INCOME STREAM</h6>
-                    <p className="mb-0 text-gray" style={{ fontSize: '0.85rem' }}>Lease income + Energy savings<br/>& market revenue.</p>
-                  </div>
-                </div>
-                <div className="hero-panel-item">
-                  <div className="hero-panel-icon orange">
-                    <i className="bi bi-lightning-charge-fill"></i>
-                  </div>
-                  <div>
-                    <h6 className="mb-1 fw-bold text-white" style={{fontSize: '0.95rem'}}>PJM MARKET EXPOSURE</h6>
-                    <p className="mb-0 text-gray" style={{ fontSize: '0.85rem' }}>Tap into billions in grid-balancing<br/>opportunities.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Dual-Benefit Framework */}
-      <section className="dual-benefit-section">
-        <div className="container-fluid px-4 px-xxl-5">
-          <div className="db-outer-box">
-            <div className="db-outer-title">
-              THE DUAL-BENEFIT FRAMEWORK
-            </div>
-            
-            <div className="row align-items-center justify-content-center px-lg-4 pt-5 pb-4">
-              <div className="col-lg-5">
-                <div className="db-box">
-                  <div className="db-icon">
-                    <i className="bi bi-currency-dollar"></i>
-                  </div>
-                  <div>
-                    <h6 className="text-green mb-2 fw-bold" style={{letterSpacing: '0.5px'}}>1. GUARANTEED LEASE INCOME</h6>
-                    <p className="text-gray mb-0" style={{fontSize: '0.95rem'}}>Predictable land/roof rental payments<br/>over a 15–20 year term.</p>
-                  </div>
-                </div>
+      {/* 2. DUAL BENEFIT FRAMEWORK */}
+      <section className="py-24 relative bg-[#05070a]">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-center gap-6 mb-12">
+            <div className="h-[1px] flex-1 max-w-[100px] bg-white/20"></div>
+            <h2 className="text-sm font-bold tracking-[3px] text-white uppercase">THE DUAL-BENEFIT FRAMEWORK</h2>
+            <div className="h-[1px] flex-1 max-w-[100px] bg-white/20"></div>
+          </div>
+
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="relative mb-16 w-[calc(100%+40px)] -mx-[20px]">
+            {/* The Border Container wrapping both benefits */}
+            <div className="border border-white/10 rounded-2xl p-8 lg:p-16 flex flex-col md:flex-row items-center gap-8 md:gap-0 justify-between relative bg-[#05070a]">
+              {/* Center Plus Divider */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-[#ff7a00] text-[#ff7a00] flex items-center justify-center z-10 bg-[#05070a] hidden md:flex shadow-[0_0_15px_rgba(255,122,0,0.2)]">
+                <Plus size={20} />
               </div>
-              
-              <div className="col-lg-2 text-center my-4 my-lg-0">
-                <div className="db-plus">
-                  <i className="bi bi-plus-lg"></i>
+
+              {/* Left Side */}
+              <div className="md:w-1/2 md:pr-16 flex items-start gap-6">
+                <div className="w-16 h-16 rounded-full border border-[#8dff4d]/50 text-[#8dff4d] flex items-center justify-center shrink-0">
+                  <DollarSign size={28} />
+                </div>
+                <div className="pt-1">
+                  <h3 className="text-[15px] font-bold text-white mb-2 uppercase tracking-wide">1. GUARANTEED LEASE INCOME</h3>
+                  <p className="text-gray-400 text-base leading-relaxed">Predictable land/roof rental payments<br/>over a 15–20 year term.</p>
                 </div>
               </div>
 
-              <div className="col-lg-5">
-                <div className="db-box">
-                  <div className="db-icon">
-                    <i className="bi bi-lightning-charge"></i>
-                  </div>
-                  <div>
-                    <h6 className="text-green mb-2 fw-bold" style={{letterSpacing: '0.5px'}}>2. BEHIND-THE-METER (BTM) PEAK SHAVING</h6>
-                    <p className="text-gray mb-0" style={{fontSize: '0.95rem'}}>Shield your facility from PJM's exploding<br/>capacity pass-through costs (30%+<br/>of corporate electric bills).</p>
-                  </div>
+              {/* Right Side */}
+              <div className="md:w-1/2 md:pl-16 flex items-start gap-6">
+                <div className="w-16 h-16 rounded-full border border-[#8dff4d]/50 text-[#8dff4d] flex items-center justify-center shrink-0">
+                  <Zap size={28} />
+                </div>
+                <div className="pt-1">
+                  <h3 className="text-[15px] font-bold text-white mb-2 uppercase tracking-wide">2. BEHIND-THE-METER (BTM) PEAK SHAVING</h3>
+                  <p className="text-gray-400 text-base leading-relaxed">Shield your facility from PJM's exploding<br/>capacity pass-through costs (30%+<br/>of corporate electric bills).</p>
                 </div>
               </div>
             </div>
+          </motion.div>
 
-            <div className="stats-row mx-lg-4">
-              <div className="stat-item">
-                <div className="stat-icon"><i className="bi bi-diagram-3"></i></div>
-                <div className="stat-text">
-                  <h4 className="text-white">$BILLIONS</h4>
-                  <p>in PJM market<br/>revenue potential</p>
-                </div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-icon"><i className="bi bi-bag"></i></div>
-                <div className="stat-text">
-                  <h4 className="text-white">0</h4>
-                  <p>Upfront cost<br/>to you</p>
-                </div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-icon"><i className="bi bi-calendar-event"></i></div>
-                <div className="stat-text">
-                  <h4 className="text-white">15-20 YEARS</h4>
-                  <p>Long-term predictable<br/>cash flow</p>
-                </div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-icon"><i className="bi bi-clock-history"></i></div>
-                <div className="stat-text">
-                  <h4 className="text-white">100%</h4>
-                  <p>Turnkey development<br/>& operations</p>
-                </div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-icon"><i className="bi bi-bounding-box-circles"></i></div>
-                <div className="stat-text">
-                  <h4 className="text-white">24/7 AI</h4>
-                  <p>Autonomous dispatch<br/>& performance</p>
-                </div>
-              </div>
+          {/* Stats Row */}
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="w-[calc(100%+40px)] -mx-[20px] pt-8">
+            <div className="flex flex-col lg:flex-row items-stretch border border-white/10 rounded-2xl bg-white/[0.02] divide-y lg:divide-y-0 lg:divide-x divide-white/10">
+              {[
+                { icon: <Globe size={24}/>, val: "$BILLIONS", desc: "in PJM market\nrevenue potential" },
+                { icon: <ClipboardList size={24}/>, val: "0", desc: "Upfront cost\nto you" },
+                { icon: <Building size={24}/>, val: "15-20 YEARS", desc: "Long-term predictable\ncash flow" },
+                { icon: <Gauge size={24}/>, val: "100%", desc: "Turnkey development\n& operations" },
+                { icon: <Cpu size={24}/>, val: "24/7 AI", desc: "Autonomous dispatch\n& performance" }
+              ].map((stat, i) => (
+                <motion.div key={i} variants={fadeUp} className="flex-1 flex items-start gap-4 p-6 w-full">
+                  <div className="text-[#ff7a00] shrink-0 mt-0.5">
+                    {stat.icon}
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <h4 className="text-[15px] font-bold text-white mb-1 leading-tight">{stat.val}</h4>
+                    <p className="text-[11px] text-gray-400 leading-relaxed whitespace-pre-line">{stat.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 3. PROPERTY TYPE CARDS */}
+      <section className="py-24 bg-[#0a0c10] relative border-t border-white/5">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-start gap-6 mb-12">
+            <h2 className="text-sm font-bold tracking-[2px] text-white uppercase">TAILORED SOLUTIONS FOR EVERY PROPERTY TYPE</h2>
+            <div className="h-[1px] flex-1 bg-white/10 max-w-2xl"></div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                img: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=600",
+                icon: <Building size={20} />,
+                color: "text-[#ff7a00] border-[#ff7a00]/30",
+                title: "WAREHOUSE &\nLOGISTICS HUBS",
+                loc: "NJ & PA TURNPIKES",
+                desc: "Turn structural dead weight into an\noperational asset.",
+                points: ["Zero roof penetrations", "Preserve warranties", "100,000+ sq ft of roof monetized", "Containerized battery storage"]
+              },
+              {
+                img: "https://images.unsplash.com/photo-1509391366360-12009a349c89?q=80&w=600",
+                icon: <TreePine size={20} />,
+                color: "text-[#8dff4d] border-[#8dff4d]/30",
+                title: "IDLE LAND &\nBUFFER ACREAGE",
+                loc: "INDUSTRIAL PA & MD",
+                desc: "Generating yield on land\nyou aren't using.",
+                points: ["Ground-mounted solar + storage", "Bypass long utility interconnection", "Plug into local distribution grids", "Operate as a Virtual Power Plant (VPP)"]
+              },
+              {
+                img: "https://images.unsplash.com/photo-1594818821905-24b31b029532?q=80&w=600",
+                icon: <CarFront size={20} />,
+                color: "text-[#8dff4d] border-[#8dff4d]/30",
+                title: "COMMERCIAL\nPARKING LOTS",
+                loc: "OFFICES & RETAIL",
+                desc: "Shade vehicles. Generate power.\nOffset demand.",
+                points: ["Solar carports & EV charging", "Reduce tenant energy costs", "Storage hidden in plain sight", "Enhance ESG & property value"]
+              }
+            ].map((card, i) => (
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: i * 0.15 }} viewport={{ once: true }}
+                className="group bg-[#111318] rounded-xl overflow-hidden border border-white/5 transition-all duration-300 flex flex-col relative"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img src={card.img} alt={card.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" />
+                </div>
+                <div className="p-8 pt-10 flex-1 flex flex-col relative">
+                  {/* Floating Icon overlapping image and content */}
+                  <div className={`absolute -top-7 left-8 w-14 h-14 bg-[#111318] border rounded-full flex items-center justify-center ${card.color}`}>
+                    {card.icon}
+                  </div>
+                  
+                  <div className="mb-4">
+                    <h3 className="text-lg font-bold text-white mb-2 whitespace-pre-line leading-tight uppercase">{card.title}</h3>
+                    <span className="text-[11px] font-bold tracking-widest text-[#ff7a00] uppercase">{card.loc}</span>
+                  </div>
+                  <p className="text-white font-medium mb-6 text-base whitespace-pre-line">{card.desc}</p>
+                  <ul className="space-y-3 mb-8 flex-1">
+                    {card.points.map((pt, j) => (
+                      <li key={j} className="flex items-start gap-3.5 text-sm text-gray-400">
+                        <CheckCircle2 size={18} fill="#8dff4d" stroke="#111318" strokeWidth={2.5} className="mt-0.5 shrink-0 drop-shadow-[0_0_5px_rgba(141,255,77,0.3)]" /> {pt}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to="#" className="inline-flex items-center gap-2 text-[11px] font-bold text-orange-custom uppercase tracking-wider transition-colors group/link mt-auto">
+                    EXPLORE SOLUTION <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Tailored Solutions Section */}
-      <section className="solutions-section">
-        <div className="container-fluid px-4 px-xxl-5">
-          <div className="section-header-left">
-            <span>TAILORED SOLUTIONS FOR EVERY PROPERTY TYPE</span>
-          </div>
-
-          <div className="row g-5 mt-2">
-            {/* Card 1 */}
-            <div className="col-lg-4 col-md-6">
-              <div className="solution-card">
-                <div className="solution-img-wrapper">
-                  <img src="/img/business-solution-2026-03-10-02-05-05-utc.JPG" alt="Warehouse & Logistics Hubs" className="solution-img" />
-                  <div className="sol-icon"><i className="bi bi-building"></i></div>
-                </div>
-                <div className="solution-content">
-                  <div className="solution-title">
-                    <h4 className="text-white">WAREHOUSE &<br/>LOGISTICS HUBS</h4>
-                    <span>NJ & PA TURNPIKES</span>
-                  </div>
-                  <p className="text-white fw-bold mb-3" style={{ fontSize: '0.95rem' }}>Turn structural dead weight into an<br/>operational asset.</p>
-                  <ul className="solution-list">
-                    <li><i className="bi bi-check2"></i> Zero roof penetrations</li>
-                    <li><i className="bi bi-check2"></i> Preserve warranties</li>
-                    <li><i className="bi bi-check2"></i> 100,000+ sq ft of roof monetized</li>
-                    <li><i className="bi bi-check2"></i> Containerized battery storage</li>
-                  </ul>
-                  <Link to="/services" className="text-orange fw-bold" style={{ textDecoration: 'none', fontSize: '0.85rem', letterSpacing: '1px' }}>
-                    EXPLORE SOLUTION <i className="bi bi-arrow-right"></i>
-                  </Link>
-                </div>
+      {/* 4. AI PLATFORM */}
+      <section className="py-24 bg-[#05070a] relative border-t border-white/5 overflow-hidden">
+        <div className="w-full px-[20px] relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}
+            className="bg-[#05070a] rounded-2xl shadow-2xl flex flex-col lg:flex-row overflow-hidden w-full mx-auto"
+          >
+            {/* Left */}
+            <div className="lg:w-[45%] p-10 lg:p-14 flex flex-col justify-center">
+              <div className="mb-4 text-[#ff7a00] text-xs font-bold tracking-[2px] uppercase">
+                HOW IT WORKS
               </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="col-lg-4 col-md-6">
-              <div className="solution-card">
-                <div className="solution-img-wrapper">
-                  <img src="/img/concept-of-an-energy-storage-system-based-on-elect-2026-03-24-07-19-07-utc.jpg" alt="Idle Land" className="solution-img" />
-                  <div className="sol-icon green"><i className="bi bi-tree"></i></div>
-                </div>
-                <div className="solution-content">
-                  <div className="solution-title">
-                    <h4 className="text-white">IDLE LAND &<br/>BUFFER ACREAGE</h4>
-                    <span>INDUSTRIAL PA & MD</span>
-                  </div>
-                  <p className="text-white fw-bold mb-3" style={{ fontSize: '0.95rem' }}>Generating yield on land<br/>you aren't using.</p>
-                  <ul className="solution-list">
-                    <li><i className="bi bi-check2"></i> Ground-mounted solar + storage</li>
-                    <li><i className="bi bi-check2"></i> Bypass long utility interconnection</li>
-                    <li><i className="bi bi-check2"></i> Plug into local distribution grids</li>
-                    <li><i className="bi bi-check2"></i> Operate as a Virtual Power Plant (VPP)</li>
-                  </ul>
-                  <Link to="/services" className="text-orange fw-bold" style={{ textDecoration: 'none', fontSize: '0.85rem', letterSpacing: '1px' }}>
-                    EXPLORE SOLUTION <i className="bi bi-arrow-right"></i>
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="col-lg-4 col-md-6">
-              <div className="solution-card">
-                <div className="solution-img-wrapper">
-                  <img src="/img/low-angle-shot-of-a-group-of-businesspeople-joinin-2026-01-09-09-45-09-utc.jpg" alt="Commercial Parking Lots" className="solution-img" />
-                  <div className="sol-icon green"><i className="bi bi-car-front"></i></div>
-                </div>
-                <div className="solution-content">
-                  <div className="solution-title">
-                    <h4 className="text-white">COMMERCIAL<br/>PARKING LOTS</h4>
-                    <span>OFFICES & RETAIL</span>
-                  </div>
-                  <p className="text-white fw-bold mb-3" style={{ fontSize: '0.95rem' }}>Shade vehicles. Generate power.<br/>Offset demand.</p>
-                  <ul className="solution-list">
-                    <li><i className="bi bi-check2"></i> Solar carports & EV charging</li>
-                    <li><i className="bi bi-check2"></i> Reduce tenant energy costs</li>
-                    <li><i className="bi bi-check2"></i> Storage hidden in plain sight</li>
-                    <li><i className="bi bi-check2"></i> Enhance ESG & property value</li>
-                  </ul>
-                  <Link to="/services" className="text-orange fw-bold" style={{ textDecoration: 'none', fontSize: '0.85rem', letterSpacing: '1px' }}>
-                    EXPLORE SOLUTION <i className="bi bi-arrow-right"></i>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works / Dashboard Section */}
-      <section className="dashboard-section">
-        <div className="container-fluid px-4 px-xxl-5">
-          <div className="row align-items-center">
-            <div className="col-lg-4 mb-5 mb-lg-0 pe-lg-5">
-              <h6 className="text-orange mb-3" style={{ letterSpacing: '1.5px', fontWeight: '700', fontSize: '0.8rem' }}>HOW IT WORKS</h6>
-              <h2 className="text-white fw-bold mb-4" style={{ fontSize: '2.4rem', lineHeight: '1.15', letterSpacing: '-0.5px' }}>
+              <h2 className="text-3xl lg:text-[40px] font-bold text-white mb-6 leading-[1.15]">
                 AI-Powered VPP Platform.<br/>Autonomous. Intelligent.<br/>Profitable.
               </h2>
-              <p className="text-gray mb-4" style={{ fontSize: '1rem', lineHeight: '1.6' }}>
+              <p className="text-[15px] text-gray-400 mb-8 leading-relaxed font-light">
                 Our proprietary AI platform continuously analyzes market prices, weather, grid conditions, and facility loads to autonomously decide the most profitable actions.
               </p>
-              <ul className="solution-list mb-5">
-                <li><i className="bi bi-check2"></i> Forecast generation, load & market prices</li>
-                <li><i className="bi bi-check2"></i> Optimize battery charge/discharge</li>
-                <li><i className="bi bi-check2"></i> Reduce peak demand automatically</li>
-                <li><i className="bi bi-check2"></i> Sell into PJM markets at the right time</li>
-                <li><i className="bi bi-check2"></i> Maximize revenue. Minimize risk.</li>
+              <ul className="space-y-4 mb-10">
+                {[
+                  "Forecast generation, load & market prices",
+                  "Optimize battery charge/discharge",
+                  "Reduce peak demand automatically",
+                  "Sell into PJM markets at the right time",
+                  "Maximize revenue. Minimize risk."
+                ].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3.5 text-gray-300 text-[14px] font-medium tracking-wide">
+                    <CheckCircle2 size={20} fill="#8dff4d" stroke="#05070a" strokeWidth={2.5} className="shrink-0 drop-shadow-[0_0_5px_rgba(141,255,77,0.3)]" /> {item}
+                  </li>
+                ))}
               </ul>
-              <Link to="/about" className="btn-outline">
-                VIEW PLATFORM <i className="bi bi-arrow-right"></i>
-              </Link>
+              <div>
+                <Link to="/about" className="px-6 py-3 rounded-lg border border-[#ff7a00] hover:bg-[#ff7a00]/10 text-white font-bold text-[11px] tracking-wider uppercase transition-all inline-flex items-center gap-2 w-fit">
+                  VIEW PLATFORM <span className="text-[#ff7a00] font-sans text-sm ml-1">→</span>
+                </Link>
+              </div>
             </div>
-            
-            <div className="col-lg-8">
-              {/* Fake Dashboard Replica */}
-              <div className="dashboard-ui">
-                {/* Sidebar */}
-                <div className="dash-sidebar">
-                  <div className="dash-brand">
-                    TECHOPS AI<span style={{color: '#f97316'}}>•</span>
-                  </div>
-                  <ul className="dash-nav">
-                    <li className="active"><i className="bi bi-grid-1x2"></i> Overview</li>
-                    <li><i className="bi bi-box"></i> Assets</li>
-                    <li><i className="bi bi-graph-up-arrow"></i> Forecasting</li>
-                    <li><i className="bi bi-lightning-charge"></i> Dispatch</li>
-                    <li><i className="bi bi-cart"></i> Markets</li>
-                    <li><i className="bi bi-currency-dollar"></i> Revenue</li>
-                    <li><i className="bi bi-file-earmark-text"></i> Reports</li>
-                    <li><i className="bi bi-bell"></i> Alerts</li>
-                    <li><i className="bi bi-gear"></i> Settings</li>
-                  </ul>
+
+            {/* Right Dashboard Mockup */}
+            <div className="lg:w-[55%] flex flex-col md:flex-row font-sans border-l border-white/5 bg-[#0b0d13]">
+              {/* Sidebar */}
+              <div className="w-16 md:w-48 bg-[#07090e] border-r border-white/5 p-4 flex flex-col hidden sm:flex shrink-0">
+                <div className="text-white font-bold text-base tracking-tight mb-8 hidden md:flex items-center gap-1.5">
+                  TECHOPS AI <div className="w-1.5 h-1.5 bg-[#8dff4d] rounded-full mb-1"></div>
                 </div>
-                
-                {/* Main Content */}
-                <div className="dash-main">
-                  <div className="dash-header">
-                    <h4>Real-Time Overview</h4>
-                    <div>
-                      <span className="text-gray" style={{fontSize: '0.8rem', marginRight: '10px'}}>System Status</span>
-                      <span className="status-pill">OPTIMAL</span>
+                <div className="flex flex-col gap-1.5">
+                  {[
+                    { icon: <LayoutDashboard size={14} />, label: "Overview", active: true },
+                    { icon: <Box size={14} />, label: "Assets" },
+                    { icon: <TrendingUp size={14} />, label: "Forecasting" },
+                    { icon: <CloudLightning size={14} />, label: "Dispatch" },
+                    { icon: <ShoppingCart size={14} />, label: "Markets" },
+                    { icon: <DollarSign size={14} />, label: "Revenue" },
+                    { icon: <FileText size={14} />, label: "Reports" },
+                    { icon: <Bell size={14} />, label: "Alerts" },
+                    { icon: <Settings size={14} />, label: "Settings" }
+                  ].map((item, i) => (
+                    <div key={i} className={`flex items-center gap-2.5 px-3 py-2 rounded-lg cursor-pointer transition-colors ${item.active ? 'text-[#ff7a00] font-bold bg-[#ff7a00]/10' : 'text-gray-500 hover:text-gray-300'}`}>
+                      {item.icon}
+                      <span className={`text-xs hidden md:block ${item.active ? 'font-bold' : 'font-medium'}`}>{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Main Dash Area */}
+              <div className="flex-1 p-5 flex flex-col bg-[#0b0d13] gap-4 overflow-hidden">
+                {/* Header Row */}
+                <div className="flex justify-between items-center">
+                  <h3 className="text-base font-bold text-white">Real-Time Overview</h3>
+                  <div className="flex items-center gap-2 bg-[#12141a] px-3 py-1.5 rounded-lg border border-white/5">
+                    <span className="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">System Status</span>
+                    <span className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#8dff4d]/10 text-[#8dff4d] text-[10px] font-bold border border-[#8dff4d]/20">
+                      <div className="w-1.5 h-1.5 bg-[#8dff4d] rounded-full shadow-[0_0_5px_rgba(141,255,77,0.5)]"></div> OPTIMAL
+                    </span>
+                  </div>
+                </div>
+
+                {/* 4 Stats Cards */}
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                  {[
+                    { l: "Total Assets", v: "24", u: "" },
+                    { l: "Total Capacity", v: "18.6", u: "MW" },
+                    { l: "Battery Capacity", v: "52.4", u: "MWh" },
+                    { l: "Live Generation", v: "12.7", u: "MW" }
+                  ].map((s, i) => (
+                    <div key={i} className="bg-[#12141a] border border-white/5 rounded-xl p-3 flex flex-col">
+                      <div className="text-[10px] text-gray-500 mb-1 font-medium">{s.l}</div>
+                      <div className="text-xl font-bold text-white leading-none">{s.v} <span className="text-[10px] font-normal text-gray-400 ml-0.5">{s.u}</span></div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Middle Charts Row */}
+                <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-3 min-h-[240px]">
+                  {/* Line Chart Panel */}
+                  <div className="lg:col-span-2 bg-[#12141a] border border-white/5 rounded-xl p-4 flex flex-col relative">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-3">
+                       <div className="text-[11px] text-white font-semibold">Power Flow</div>
+                       <div className="flex flex-wrap justify-end gap-2 text-[9px] text-gray-400 font-medium mt-2 md:mt-0">
+                         <span className="flex items-center gap-1"><div className="w-1.5 h-1.5 bg-[#ff7a00] rounded-full"></div> Solar Generation</span>
+                         <span className="flex items-center gap-1"><div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div> Facility Load</span>
+                         <span className="flex items-center gap-1"><div className="w-1.5 h-1.5 bg-[#8dff4d] rounded-full"></div> Battery Charge</span>
+                         <span className="flex items-center gap-1"><div className="w-1.5 h-1.5 bg-[#3b82f6] rounded-full"></div> Market Export</span>
+                       </div>
+                    </div>
+                    {/* Graph grid lines */}
+                    <div className="flex-1 relative border-b border-l border-white/10">
+                      <div className="absolute inset-0 flex flex-col justify-between">
+                         <div className="w-full h-[1px] bg-white/5"></div>
+                         <div className="w-full h-[1px] bg-white/5"></div>
+                         <div className="w-full h-[1px] bg-white/5"></div>
+                         <div className="w-full h-[1px] bg-white/5"></div>
+                      </div>
+                      <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                        {/* Smooth curves instead of rigid lines */}
+                        <path fill="none" stroke="#ff7a00" strokeWidth="2" d="M0,80 C30,60 60,90 90,40 C120,30 150,70 180,50 C210,60 250,20 300,50" />
+                        <path fill="none" stroke="#3b82f6" strokeWidth="2" d="M0,100 C30,90 60,80 90,70 C120,110 150,90 180,100 C210,110 250,80 300,90" />
+                        <path fill="none" stroke="#8dff4d" strokeWidth="2" strokeDasharray="4" d="M0,120 L100,120 L150,50 L200,120 L300,120" />
+                      </svg>
+                    </div>
+                    <div className="flex justify-between text-[9px] text-gray-500 mt-1.5 font-medium">
+                       <span>00:00</span><span>04:00</span><span>08:00</span><span>12:00</span><span>16:00</span><span>20:00</span><span>24:00</span>
                     </div>
                   </div>
-                  
-                  <div className="dash-top-stats">
-                    <div className="dash-stat-box">
-                      <span>Total Assets</span>
-                      <strong>24</strong>
-                    </div>
-                    <div className="dash-stat-box">
-                      <span>Total Capacity</span>
-                      <strong>18.6 <small>MW</small></strong>
-                    </div>
-                    <div className="dash-stat-box">
-                      <span>Battery Capacity</span>
-                      <strong>52.4 <small>MWh</small></strong>
-                    </div>
-                    <div className="dash-stat-box">
-                      <span>Live Generation</span>
-                      <strong>12.7 <small>MW</small></strong>
-                    </div>
+
+                  {/* Donut Chart Panel */}
+                  <div className="col-span-1 bg-[#12141a] border border-white/5 rounded-xl p-4 flex flex-col">
+                     <div className="text-[11px] text-white font-semibold mb-1">Revenue Today</div>
+                     <div className="text-xl font-bold text-white leading-none mb-3">$128,540</div>
+                     
+                     <div className="flex justify-center mb-3">
+                       <svg viewBox="0 0 36 36" className="w-16 h-16">
+                          <path className="text-white/10" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="8" />
+                          <path className="text-[#ff7a00]" strokeDasharray="45, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="8" />
+                          <path className="text-blue-500" strokeDasharray="25, 100" strokeDashoffset="-45" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="8" />
+                          <path className="text-[#8dff4d]" strokeDasharray="20, 100" strokeDashoffset="-70" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="8" />
+                          <path className="text-gray-500" strokeDasharray="10, 100" strokeDashoffset="-90" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="8" />
+                       </svg>
+                     </div>
+
+                     <div className="mt-auto flex flex-col gap-1 text-[8px] text-gray-400 font-medium">
+                        <div className="flex justify-between items-center"><span><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#ff7a00] mr-1.5"></span>Energy Arbitrage</span><span className="text-white">45%</span></div>
+                        <div className="flex justify-between items-center"><span><span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-500 mr-1.5"></span>Demand Response</span><span className="text-white">25%</span></div>
+                        <div className="flex justify-between items-center"><span><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#8dff4d] mr-1.5"></span>Capacity Market</span><span className="text-white">20%</span></div>
+                        <div className="flex justify-between items-center"><span><span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-500 mr-1.5"></span>Other Revenues</span><span className="text-white">10%</span></div>
+                     </div>
                   </div>
-                  
-                  <div className="dash-charts">
-                    <div className="dash-chart-box">
-                      <div className="dash-chart-title d-flex justify-content-between">
-                        <span>Power Flow</span>
-                        <div style={{fontSize: '0.7rem', color: '#9ca3af', display: 'flex', gap: '10px'}}>
-                          <span><span style={{color: '#f97316'}}>•</span> Solar</span>
-                          <span><span style={{color: '#3b82f6'}}>•</span> Load</span>
-                          <span><span style={{color: '#4ade80'}}>•</span> Battery</span>
+                </div>
+
+                {/* Bottom Alerts Row */}
+                <div className="bg-[#12141a] border border-white/5 rounded-xl p-3 px-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shrink-0">
+                  <div className="flex flex-wrap items-center gap-6 flex-1">
+                     <div>
+                        <div className="text-[9px] text-gray-500 uppercase font-semibold mb-1">AI Dispatch Status</div>
+                        <span className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#8dff4d]/10 text-[#8dff4d] text-[10px] font-bold border border-[#8dff4d]/20">
+                          <div className="w-1.5 h-1.5 bg-[#8dff4d] rounded-full shadow-[0_0_5px_rgba(141,255,77,0.5)]"></div> ACTIVE
+                        </span>
+                     </div>
+                     <div className="w-[1px] h-8 bg-white/5 hidden md:block"></div>
+                     <div>
+                        <div className="text-[9px] text-gray-500 uppercase font-semibold mb-0.5">Next Action</div>
+                        <div className="text-white text-[11px] font-bold">Discharge Battery 2.4 MW</div>
+                        <div className="text-[9px] text-gray-400 mt-0.5">Market Price: $82.67/MWh</div>
+                     </div>
+                     <div className="w-[1px] h-8 bg-white/5 hidden md:block"></div>
+                     <div>
+                        <div className="text-[9px] text-gray-500 uppercase font-semibold mb-0.5">Next 5 Min Forecast</div>
+                        <div className="text-[#ff7a00] text-[11px] font-bold flex items-center gap-1">
+                          High Price Event
                         </div>
-                      </div>
-                      <div className="mock-line-chart">
-                        <svg className="mock-chart-svg" viewBox="0 0 400 150" preserveAspectRatio="none">
-                          <polyline fill="none" stroke="#f97316" strokeWidth="2" points="0,100 50,80 100,120 150,60 200,40 250,90 300,50 350,70 400,30" />
-                          <polyline fill="none" stroke="#3b82f6" strokeWidth="2" points="0,120 50,110 100,100 150,90 200,130 250,100 300,110 350,130 400,90" />
-                          <polyline fill="none" stroke="#4ade80" strokeWidth="2" strokeDasharray="4" points="0,140 150,140 200,80 250,140 400,140" />
-                        </svg>
-                      </div>
-                      <div className="d-flex justify-content-between mt-2 text-gray" style={{fontSize: '0.65rem'}}>
-                        <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span>
-                      </div>
-                    </div>
-                    
-                    <div className="dash-chart-box">
-                      <div className="dash-chart-title">Revenue Today</div>
-                      <h4 className="text-white mb-4">$128,540</h4>
-                      <div className="mock-donut-wrapper">
-                        <div className="mock-donut"></div>
-                        <div className="mock-donut-legend">
-                          <div className="legend-item"><span className="text-white"><span className="legend-color" style={{backgroundColor: '#f97316'}}></span>Energy Arbitrage</span> <span>45%</span></div>
-                          <div className="legend-item"><span className="text-white"><span className="legend-color" style={{backgroundColor: '#4ade80'}}></span>Demand Response</span> <span>25%</span></div>
-                          <div className="legend-item"><span className="text-white"><span className="legend-color" style={{backgroundColor: '#3b82f6'}}></span>Capacity Market</span> <span>20%</span></div>
-                          <div className="legend-item"><span className="text-white"><span className="legend-color" style={{backgroundColor: '#8b5cf6'}}></span>Other Revenues</span> <span>10%</span></div>
-                        </div>
-                      </div>
-                    </div>
+                        <div className="text-[9px] text-gray-400 mt-0.5">Increase Export</div>
+                     </div>
                   </div>
-                  
-                  <div className="dash-bottom">
-                    <div className="dash-bottom-item">
-                      <span>AI Dispatch Status</span>
-                      <strong className="text-green">ACTIVE</strong>
-                    </div>
-                    <div className="dash-bottom-item">
-                      <span>Next Action</span>
-                      <strong>Discharge Battery 2.4 MW</strong>
-                      <span style={{fontSize: '0.65rem', marginTop: '2px'}}>Market Price: $82.67/MWh</span>
-                    </div>
-                    <div className="dash-bottom-item">
-                      <span>Next 5 Min Forecast</span>
-                      <strong>High Price Event</strong>
-                      <span style={{fontSize: '0.65rem', marginTop: '2px'}}>Increase Export</span>
-                    </div>
-                    <div className="dash-bottom-item" style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
-                      <i className="bi bi-cloud-arrow-down text-green" style={{fontSize: '1.5rem'}}></i>
-                      <div>
-                        <span>CO₂ Offset Today</span>
-                        <strong>28.4 Tons</strong>
-                      </div>
-                    </div>
+                  <div className="flex items-center gap-2 border border-white/5 bg-[#12141a] px-2.5 py-1.5 rounded-lg shrink-0">
+                     <Leaf size={12} className="text-[#8dff4d]" />
+                     <div>
+                        <div className="text-[8px] text-gray-400 uppercase font-semibold leading-none mb-0.5">CO₂ Offset Today</div>
+                        <div className="text-white text-[11px] font-bold leading-none mt-1">28.4 Tons</div>
+                     </div>
                   </div>
-                  
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
+        </div>
+      </section>
 
-          {/* CTA Banner */}
-          <div className="cta-banner">
-            <div className="cta-content">
-              <h2 className="text-white fw-bold mb-3">Your Assets. Our Technology.<br/>Shared Success.</h2>
-              <p className="text-gray mb-0">Join the growing number of forward-thinking real estate owners<br/>who are turning their properties into long-term cash-flowing assets.</p>
+      {/* 5. CTA BANNER */}
+      <section className="py-24 bg-[#05070a] relative border-t border-white/5">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="bg-[#111318] border border-white/5 rounded p-12 lg:p-14 flex flex-col lg:flex-row items-center justify-between gap-10 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#111318] via-[#111318]/90 to-[#111318]/50"></div>
+            <div className="absolute top-0 right-0 w-[400px] h-full bg-gradient-to-l from-[#ff7a00]/20 to-transparent pointer-events-none"></div>
+
+            <div className="lg:w-1/2 relative z-10">
+              <h2 className="text-3xl lg:text-[40px] font-bold text-white mb-4 leading-tight">Your Assets. Our Technology.<br/>Shared Success.</h2>
+              <p className="text-gray-400 text-base font-light max-w-md">Join the growing number of forward-thinking real estate owners who are turning their properties into long-term cash-flowing assets.</p>
             </div>
-            <div className="cta-stats">
-              <div className="cta-stat"><i className="bi bi-record-circle"></i> <span className="text-white">Zero risk</span></div>
-              <div className="cta-stat"><i className="bi bi-record-circle"></i> <span className="text-white">Zero capital</span></div>
-              <div className="cta-stat"><i className="bi bi-record-circle"></i> <span className="text-white">Maximum reward</span></div>
-            </div>
-            <div>
-              <Link to="/contact" className="btn-orange">
-                GET YOUR FREE SITE ASSESSMENT <i className="bi bi-arrow-right"></i>
+            
+            <div className="flex flex-col sm:flex-row items-center gap-10 lg:w-1/2 justify-end relative z-10">
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-3 text-white text-sm font-medium"><div className="w-3.5 h-3.5 border border-[#ff7a00] rounded-full flex items-center justify-center text-[#ff7a00]"><div className="w-1.5 h-1.5 bg-[#ff7a00] rounded-full"></div></div> Zero risk</div>
+                <div className="flex items-center gap-3 text-white text-sm font-medium"><div className="w-3.5 h-3.5 border border-[#ff7a00] rounded-full flex items-center justify-center text-[#ff7a00]"><div className="w-1.5 h-1.5 bg-[#ff7a00] rounded-full"></div></div> Zero capital</div>
+                <div className="flex items-center gap-3 text-white text-sm font-medium"><div className="w-3.5 h-3.5 border border-[#ff7a00] rounded-full flex items-center justify-center text-[#ff7a00]"><div className="w-1.5 h-1.5 bg-[#ff7a00] rounded-full"></div></div> Maximum reward</div>
+              </div>
+              <Link to="/contact" className="px-8 py-3.5 rounded bg-[#ff7a00] hover:bg-[#ff8a1c] text-black font-bold text-xs tracking-wider uppercase transition-all whitespace-nowrap flex items-center gap-2">
+                GET YOUR FREE SITE ASSESSMENT <ArrowRight size={16} />
               </Link>
             </div>
           </div>
-
         </div>
       </section>
+
+      {/* FOOTER */}
+      <footer className="bg-[#05070a] pt-16 pb-8 border-t border-white/5">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-16">
+            
+            <div className="col-span-2 lg:col-span-2 pr-12">
+              <img src={logoImg} alt="TechOps Global" className="h-8 object-contain mb-6" style={{ filter: 'invert(1)', mixBlendMode: 'screen' }} />
+              <p className="text-white text-base leading-relaxed mb-6 font-light">
+                AI-powered energy infrastructure developer specializing in behind-the-meter solar, battery storage, and VPP solutions across the PJM markets.
+              </p>
+              <div className="flex gap-3">
+                 <div className="w-8 h-8 rounded-full border border-white/20 text-white flex items-center justify-center text-xs cursor-pointer hover:border-white transition-colors">in</div>
+                 <div className="w-8 h-8 rounded-full border border-white/20 text-white flex items-center justify-center text-xs cursor-pointer hover:border-white transition-colors">X</div>
+                 <div className="w-8 h-8 rounded-full border border-white/20 text-white flex items-center justify-center text-xs cursor-pointer hover:border-white transition-colors">YT</div>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-5 text-base tracking-widest uppercase">SOLUTIONS</h4>
+              <ul className="space-y-3">
+                {["Warehouse & Logistics", "Idle Land", "Parking Lots", "Battery Storage", "VPP & Markets"].map(l => (
+                  <li key={l}><Link to="#" className="text-white text-sm hover:text-gray-300 transition-colors">{l}</Link></li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-5 text-base tracking-widest uppercase">COMPANY</h4>
+              <ul className="space-y-3">
+                {["About Us", "Leadership", "Careers", "News", "Contact Us"].map(l => (
+                  <li key={l}><Link to="#" className="text-white text-sm hover:text-gray-300 transition-colors">{l}</Link></li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-5 text-base tracking-widest uppercase">RESOURCES</h4>
+              <ul className="space-y-3">
+                {["Case Studies", "Whitepapers", "Blog", "FAQs", "Investor Relations"].map(l => (
+                  <li key={l}><Link to="#" className="text-white text-base hover:text-gray-300 transition-colors">{l}</Link></li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="col-span-2 md:col-span-1 lg:col-span-1">
+              <h4 className="text-white font-bold mb-5 text-base tracking-widest uppercase">CONTACT US</h4>
+              <ul className="space-y-2 mb-6">
+                <li className="text-white text-base">hello@techopsglobal.com</li>
+                <li className="text-white text-base">(608) 555-0123</li>
+                <li className="text-white text-base flex items-center gap-2 mt-2"><MapPin size={14}/> Princeton, NJ</li>
+              </ul>
+
+            </div>
+
+          </div>
+
+          <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-white/5 text-gray-400 text-sm">
+            <p>© 2025 TechOps Global. All rights reserved.</p>
+            <div className="flex gap-6 mt-4 md:mt-0">
+              <Link to="#" className="text-gray-500 hover:text-gray-400 transition-colors">Privacy Policy</Link>
+              <Link to="#" className="text-gray-500 hover:text-gray-400 transition-colors">Terms of Service</Link>
+              <Link to="#" className="text-gray-500 hover:text-gray-400 transition-colors">Sitemap</Link>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
-
-export default Home;

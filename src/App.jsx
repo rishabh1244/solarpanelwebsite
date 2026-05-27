@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -41,7 +42,7 @@ function Layout() {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
-  return (
+    return (
     <>
     {/*==================================================*/}
     {/* Start Solar Panel  Header Section */}
@@ -52,30 +53,61 @@ function Layout() {
           {/* Logo */}
           <div className="col-auto">
             <div className="logo">
-              <Link to="/"><img src={logoImg} alt="TechOps Global Logo" style={{height: '45px', width: 'auto'}} loading="lazy" /></Link>
+              <Link to="/">
+                <img 
+                  src={logoImg} 
+                  alt="TechOps Global Logo" 
+                  style={{height: '42px', width: 'auto', filter: 'invert(1)', mixBlendMode: 'screen'}} 
+                  loading="lazy" 
+                />
+              </Link>
             </div>
           </div>
 
           {/* Desktop Nav Links */}
           <div className="col-auto d-none d-lg-flex">
             <nav className="d-flex align-items-center gap-4 custom-nav-links">
-              <Link to="/">Home</Link>
-              <Link to="/about">About</Link>
-              <Link to="/services">Services</Link>
-              <Link to="/team">Team</Link>
-              <Link to="/videos">Videos</Link>
-              <Link to="/contact">Contacts</Link>
+              <Link to="/" className="text-white text-decoration-none uppercase tracking-wider hover-orange" style={{fontSize: '11px', fontWeight: '800'}}>
+                Home
+              </Link>
+              <Link to="/about" className="text-white text-decoration-none uppercase tracking-wider hover-orange" style={{fontSize: '11px', fontWeight: '800'}}>
+                About
+              </Link>
+              <Link to="/services" className="text-white text-decoration-none uppercase tracking-wider hover-orange" style={{fontSize: '11px', fontWeight: '800'}}>
+                Service
+              </Link>
+              <Link to="/team" className="text-white text-decoration-none uppercase tracking-wider hover-orange" style={{fontSize: '11px', fontWeight: '800'}}>
+                Team
+              </Link>
+              <Link to="/videos" className="text-white text-decoration-none uppercase tracking-wider hover-orange" style={{fontSize: '11px', fontWeight: '800'}}>
+                Videos
+              </Link>
+              <Link to="/contact" className="text-white text-decoration-none uppercase tracking-wider hover-orange" style={{fontSize: '11px', fontWeight: '800'}}>
+                Contact
+              </Link>
             </nav>
           </div>
 
           {/* Right Area: Button & Hamburger */}
-          <div className="col-auto d-flex align-items-center gap-3">
-            <Link to="/contact" className="btn-nav-outline d-none d-md-inline-flex">
-              GET A QUOTE
+          <div className="col-auto d-flex align-items-center gap-4">
+            <Link 
+              to="/contact" 
+              className="d-none d-md-inline-flex text-decoration-none align-items-center justify-content-center px-4 py-2.5" 
+              style={{
+                background: '#ff7a00',
+                border: '1px solid #ff7a00', 
+                color: '#000000', 
+                fontSize: '10px', 
+                fontWeight: '800', 
+                letterSpacing: '1px', 
+                borderRadius: '4px'
+              }}
+            >
+              GET SITE ASSESSMENT
             </Link>
             
             <button 
-              className="mobile-nav-toggle ms-3" 
+              className="mobile-nav-toggle flex items-center justify-center p-0" 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle navigation"
               style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
@@ -87,18 +119,29 @@ function Layout() {
       </div>
 
       {/* Mobile Nav Wrapper (Hidden on Desktop) */}
-      <div className={`mobile-nav-wrapper ${isMobileMenuOpen ? 'open' : ''} d-lg-none`} style={{background: '#161821'}}>
-        <div className="solar-menu" style={{padding: '20px'}}>
-          <ul style={{listStyle:'none', padding:0, margin:0, display:'flex', flexDirection:'column', gap:'15px'}}>
-            <li><Link to="/" onClick={() => setIsMobileMenuOpen(false)} style={{color:'#fff', textDecoration:'none', fontWeight: 600}}>Home</Link></li>
-            <li><Link to="/about" onClick={() => setIsMobileMenuOpen(false)} style={{color:'#fff', textDecoration:'none', fontWeight: 600}}>About</Link></li>
-            <li><Link to="/services" onClick={() => setIsMobileMenuOpen(false)} style={{color:'#fff', textDecoration:'none', fontWeight: 600}}>Services</Link></li>
-            <li><Link to="/team" onClick={() => setIsMobileMenuOpen(false)} style={{color:'#fff', textDecoration:'none', fontWeight: 600}}>Team</Link></li>
-            <li><Link to="/videos" onClick={() => setIsMobileMenuOpen(false)} style={{color:'#fff', textDecoration:'none', fontWeight: 600}}>Videos</Link></li>
-            <li><Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} style={{color:'#fff', textDecoration:'none', fontWeight: 600}}>Contacts</Link></li>
-          </ul>
-        </div>
-      </div>
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="custom-mobile-nav-menu d-lg-none" 
+            style={{background: '#161821', position: 'absolute', top: '100%', left: 0, width: '100%', borderBottom: '1px solid rgba(255,255,255,0.05)', zIndex: 999}}
+          >
+            <div className="solar-menu" style={{padding: '20px'}}>
+              <ul style={{listStyle:'none', padding:0, margin:0, display:'flex', flexDirection:'column', gap:'15px'}}>
+                <li><Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="hover-orange" style={{color:'#fff', textDecoration:'none', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase'}}>Home</Link></li>
+                <li><Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="hover-orange" style={{color:'#fff', textDecoration:'none', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase'}}>About</Link></li>
+                <li><Link to="/services" onClick={() => setIsMobileMenuOpen(false)} className="hover-orange" style={{color:'#fff', textDecoration:'none', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase'}}>Service</Link></li>
+                <li><Link to="/team" onClick={() => setIsMobileMenuOpen(false)} className="hover-orange" style={{color:'#fff', textDecoration:'none', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase'}}>Team</Link></li>
+                <li><Link to="/videos" onClick={() => setIsMobileMenuOpen(false)} className="hover-orange" style={{color:'#fff', textDecoration:'none', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase'}}>Videos</Link></li>
+                <li><Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="hover-orange" style={{color:'#fff', textDecoration:'none', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase'}}>Contact</Link></li>
+              </ul>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
     {/*==================================================*/}
     {/* End Solar Panel  Header Section */}
@@ -118,6 +161,7 @@ function Layout() {
     {/*==================================================*/}
     {/* Start Solar Panel  Footer  Section */}
     {/*==================================================*/} 
+    {location.pathname !== '/' && (
      <footer className="footer-section" style={{background: '#0b0c10', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '60px', paddingBottom: '20px', fontFamily: "'Inter', sans-serif"}}>
       <div className="container-fluid px-4 px-xxl-5">
         <div className="row mb-5">
@@ -201,6 +245,7 @@ function Layout() {
         </div>
       </div>
     </footer>
+    )}
     {/*==================================================*/}
     {/* End Solar Panel  Footer  Section */}
     {/*==================================================*/} 
@@ -222,26 +267,30 @@ function Layout() {
     {/* End Search Popup Area */}
     {/*==================================================*/}
 
-    {/*==================================================*/}
-    {/* Start scrollup section Area */}
-    {/*==================================================*/}
-     <div className="scroll-area">
-      <div className="top-wrap">
-        <div className="go-top-btn-wraper">
-          <div className="go-top go-top-button">
-            <i className="fas fa-arrow-up"></i>
-            <i className="fas fa-arrow-up"></i>
+    {location.pathname !== '/' && (
+      <>
+        {/*==================================================*/}
+        {/* Start scrollup section Area */}
+        {/*==================================================*/}
+        <div className="scroll-area">
+          <div className="top-wrap">
+            <div className="go-top-btn-wraper">
+              <div className="go-top go-top-button">
+                <i className="fas fa-arrow-up"></i>
+                <i className="fas fa-arrow-up"></i>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    {/*==================================================*/}
-    {/* End scrollup section Area */}
-    {/*==================================================*/}
-    {/* WhatsApp Floating Button */}
-    <a href="https://wa.me/12403513209" className="whatsapp-float" target="_blank" rel="noopener noreferrer">
-      <i className="fab fa-whatsapp"></i>
-    </a>
+        {/*==================================================*/}
+        {/* End scrollup section Area */}
+        {/*==================================================*/}
+        {/* WhatsApp Floating Button */}
+        <a href="https://wa.me/12403513209" className="whatsapp-float" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-whatsapp"></i>
+        </a>
+      </>
+    )}
     </>
   );
 }
