@@ -1,28 +1,5 @@
-@import "tailwindcss";
-
-@theme {
-  --color-dark-navy: #05070b;
-  --color-dark-blue: #08111f;
-  --color-dark-gray: #0c1524;
-  
-  --color-orange-500: #ff7a00;
-  --color-orange-400: #ff8a1c;
-  --color-orange-600: #ff6a00;
-
-  --color-green-400: #9dff3f;
-  --color-green-500: #8dff4d;
-
-  --color-text-white: #ffffff;
-  --color-text-gray: #a8b0bd;
-  --color-text-dim: #6e7785;
-}
-
 html {
   scroll-behavior: smooth;
-}
-
-a {
-  text-decoration: none !important;
 }
 
 /* Failsafe exactly for React + WOW.js reload issues */
@@ -237,43 +214,4 @@ a {
         left: 20px;
         font-size: 25px;
     }
-}
-
-.text-orange-custom {
-  color: #ff7a00 !important;
-}
-.text-orange-custom:hover {
-  color: #ff8a1c !important;
-}
-
-.text-white-custom {
-  color: #ffffff !important;
-}
-.text-white-custom:hover {
-  color: #cccccc !important;
-}
-
-.hover-orange {
-  transition: color 0.3s ease;
-}
-.hover-orange:hover {
-  color: #ff7a00 !important;
-}
-
-.hover-orange-bg {
-  transition: all 0.3s ease;
-}
-.hover-orange-bg:hover {
-  background-color: #ff7a00 !important;
-  color: #000000 !important;
-}
-
-/* Sticky Navbar dark mode overrides */
-.sticky-nav {
-  background: rgba(11, 13, 19, 0.95) !important;
-  backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-}
-.sticky-nav img {
-  height: 38px !important;
 }
