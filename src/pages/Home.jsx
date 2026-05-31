@@ -120,14 +120,14 @@ export default function Home() {
           <div className="absolute top-1/3 right-0 w-[500px] h-[300px] bg-[#ff7a00]/10 blur-[150px] rounded-full pointer-events-none"></div>
         </div>
 
-        <div className="w-full px-[50px] relative z-10">
+        <div className="w-full px-6 md:px-[50px] relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
-            <motion.div variants={fadeUp} initial="hidden" animate="visible" className="lg:col-span-6 pt-24 lg:pt-32 lg:-ml-8 xl:-ml-16 translate-x-[50px]">
-              <div className="mb-4 text-[#ff7a00] text-[18px] lg:text-[14px] font-bold tracking-[4px] uppercase">
+            <motion.div variants={fadeUp} initial="hidden" animate="visible" className="lg:col-span-6 pt-24 lg:pt-32 lg:-ml-8 xl:-ml-16 lg:translate-x-[50px]">
+              <div className="mb-4 text-[#ff7a00] text-[14px] font-bold tracking-[4px] uppercase">
                 AI POWER. REAL ESTATE. REAL REVENUE.
               </div>
-              <h1 className="text-[56px] lg:text-[60px] font-bold leading-[1.05] tracking-wide mb-6 text-white">
+              <h1 className="text-[36px] sm:text-[48px] lg:text-[60px] font-bold leading-[1.05] tracking-wide mb-6 text-white">
                 Turn Your PJM<br/>Real Estate Footprint<br/>into a <span className="text-[#ff7a00]">Zero-Capex<br/>Revenue Engine.</span>
               </h1>
               <p className="text-[20px] lg:text-[20px] text-gray-300 mb-8 max-w-xl leading-relaxed font-light tracking-[0.5px]">

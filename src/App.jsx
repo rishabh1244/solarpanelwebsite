@@ -127,46 +127,142 @@ function Layout() {
         </div>
       </div>
 
-      {/* Mobile Nav Wrapper (Hidden on Desktop) */}
+      {/* Mobile Sidebar Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="custom-mobile-nav-menu d-lg-none" 
-            style={{background: '#161821', position: 'absolute', top: '100%', left: 0, width: '100%', borderBottom: '1px solid rgba(255,255,255,0.05)', zIndex: 999}}
-          >
-            <div className="solar-menu" style={{padding: '20px'}}>
-              <ul style={{listStyle:'none', padding:0, margin:0, display:'flex', flexDirection:'column', gap:'15px'}}>
+          <>
+            {/* Backdrop */}
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="d-lg-none"
+              style={{
+                position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)',
+                backdropFilter: 'blur(4px)', zIndex: 1100
+              }}
+            />
+
+            {/* Sidebar Panel */}
+            <motion.div
+              key="sidebar"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+              className="d-lg-none"
+              style={{
+                position: 'fixed', top: 0, right: 0, bottom: 0,
+                width: '85%', maxWidth: '360px',
+                background: 'linear-gradient(160deg, #0d0f1a 0%, #111420 100%)',
+                borderLeft: '1px solid rgba(255,255,255,0.07)',
+                zIndex: 1200,
+                display: 'flex', flexDirection: 'column',
+                overflowY: 'auto'
+              }}
+            >
+              {/* Sidebar Header */}
+              <div style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                padding: '20px 24px', borderBottom: '1px solid rgba(255,255,255,0.06)'
+              }}>
+                <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
+                  <img
+                    src={logoImg} alt="TechOps Global"
+                    style={{ height: '32px', width: 'auto', filter: 'invert(1)', mixBlendMode: 'screen' }}
+                  />
+                </Link>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  style={{
+                    background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)',
+                    borderRadius: '8px', width: '38px', height: '38px',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    cursor: 'pointer', color: '#fff'
+                  }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+
+              {/* Nav Links */}
+              <div style={{ flex: 1, padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 {[
                   { name: "Home", path: "/" },
-                  { name: "About", path: "/about" },
-                  { name: "Warehouse", path: "/solutions/warehouse" },
+                  { name: "About Us", path: "/about" },
+                  { name: "Warehouse Solutions", path: "/solutions/warehouse" },
                   { name: "Property Types", path: "/property-types" },
-                  { name: "How It Works", path: "/how-it-works" }
-                ].map(link => (
-                  <li key={link.name}>
+                  { name: "How It Works", path: "/how-it-works" },
+                ].map((link, i) => (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 + i * 0.07, duration: 0.25 }}
+                  >
                     <Link
                       to={link.path}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="hover-orange"
                       style={{
-                        color: isActive(link.path) ? '#ff7a00' : '#ffffff',
+                        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                        padding: '14px 18px',
+                        borderRadius: '12px',
                         textDecoration: 'none',
+                        background: isActive(link.path) ? 'rgba(255,122,0,0.1)' : 'transparent',
+                        border: `1px solid ${isActive(link.path) ? 'rgba(255,122,0,0.25)' : 'transparent'}`,
+                        color: isActive(link.path) ? '#ff7a00' : '#e5e7eb',
                         fontWeight: 700,
-                        fontSize: '14px',
-                        textTransform: 'uppercase'
+                        fontSize: '16px',
+                        letterSpacing: '0.3px',
+                        transition: 'all 0.2s'
                       }}
                     >
                       {link.name}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={isActive(link.path) ? '#ff7a00' : '#6b7280'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                     </Link>
-                  </li>
+                  </motion.div>
                 ))}
-              </ul>
-            </div>
-          </motion.div>
+              </div>
+
+              {/* CTA Button */}
+              <div style={{ padding: '0 20px 20px' }}>
+                <Link
+                  to="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  style={{
+                    display: 'block', textAlign: 'center',
+                    background: '#ff7a00', color: '#000',
+                    fontWeight: 800, fontSize: '14px',
+                    letterSpacing: '1.5px', textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    padding: '14px 20px',
+                    borderRadius: '10px',
+                    marginBottom: '14px'
+                  }}
+                >
+                  Get Site Assessment →
+                </Link>
+
+                {/* Social + Copyright */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '14px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                  <span style={{ color: '#6b7280', fontSize: '12px' }}>© 2025 TechOps Global</span>
+                  <div style={{ display: 'flex', gap: '10px' }}>
+                    {['in', 'X', 'YT'].map(s => (
+                      <div key={s} style={{
+                        width: '32px', height: '32px', borderRadius: '50%',
+                        border: '1px solid rgba(255,255,255,0.15)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        color: '#9ca3af', fontSize: '12px', fontWeight: 700, cursor: 'pointer'
+                      }}>{s}</div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>
