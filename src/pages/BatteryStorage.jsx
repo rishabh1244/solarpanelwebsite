@@ -25,7 +25,7 @@ export default function BatteryStorage() {
             >
                 {/* Breadcrumb */}
                 <div className="w-full px-[50px] mb-8">
-                    <div className="flex items-center gap-2 text-[16px] font-bold text-gray-400 tracking-wider uppercase">
+                    <div className="flex items-center gap-2 type-body-sm font-bold text-gray-400 tracking-wider uppercase">
                         <Link to="/" className="text-white hover:text-[#ff7a00] transition-colors">Home</Link>
                         <span>&gt;</span>
                         <span className="text-gray-400">Solutions</span>
@@ -39,27 +39,27 @@ export default function BatteryStorage() {
 
                         {/* Left copy */}
                         <div className="lg:col-span-7">
-                            <div className="mb-4 text-[#ff7a00] text-[18px] font-bold tracking-[3px] uppercase">
+                            <div className="mb-4 text-[#ff7a00] type-body font-bold tracking-[3px] uppercase">
                                 Store Today. Power Tomorrow.
                             </div>
-                            <h1 className="!text-white text-[52px] lg:text-[62px] font-extrabold leading-[1.1] tracking-tight mb-6">
+                            <h1 className="!text-white type-hero mb-6">
                                 Battery Storage<br />
                                 Solutions for a<br />
                                 <span className="!text-[#ff7a00]">Smarter Energy Future.</span>
                             </h1>
-                            <p className="text-[20px] lg:text-[22px] text-gray-300 mb-10 leading-relaxed font-light max-w-2xl">
+                            <p className="type-body-lg text-gray-300 mb-10 max-w-2xl">
                                 TechOps Global develops, owns, and operates advanced battery energy storage systems that provide reliability, lower costs, and unlock new revenue streams through energy markets and grid services.
                             </p>
                             <div className="flex flex-wrap items-center gap-5">
                                 <Link
                                     to="/contact"
-                                    className="px-7 py-3.5 rounded bg-[#ff7a00] hover:bg-[#ff8a1c] text-black font-extrabold tracking-wider transition-all flex items-center gap-2 text-[16px] uppercase shadow-[0_4px_25px_rgba(255,122,0,0.35)]"
+                                    className="px-7 py-3.5 rounded bg-[#ff7a00] hover:bg-[#ff8a1c] text-black font-extrabold tracking-wider transition-all flex items-center gap-2 type-body-sm uppercase shadow-[0_4px_25px_rgba(255,122,0,0.35)]"
                                 >
                                     GET SITE ASSESSMENT <ArrowRight size={16} />
                                 </Link>
                                 <a
                                     href="#how-it-works"
-                                    className="px-7 py-3.5 rounded border-2 border-white/50 hover:border-white text-white hover:bg-white/5 font-extrabold tracking-wider transition-all flex items-center gap-3 text-[16px] uppercase"
+                                    className="px-7 py-3.5 rounded border-2 border-white/50 hover:border-white text-white hover:bg-white/5 font-extrabold tracking-wider transition-all flex items-center gap-3 type-body-sm uppercase"
                                     style={{ textDecoration: "none" }}
                                 >
                                     SEE HOW IT WORKS <PlayCircle size={18} />
@@ -87,8 +87,8 @@ export default function BatteryStorage() {
                                             {card.icon}
                                         </div>
                                         <div>
-                                            <h4 className="!text-white font-extrabold text-[18px] tracking-wide uppercase">{card.title}</h4>
-                                            <p className="text-[16px] text-gray-400 mt-1 leading-snug">{card.desc}</p>
+                                            <h4 className="!text-white type-card tracking-wide uppercase">{card.title}</h4>
+                                            <p className="type-body text-gray-400 mt-1">{card.desc}</p>
                                         </div>
                                     </div>
                                 </div>
