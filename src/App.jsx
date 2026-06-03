@@ -10,6 +10,8 @@ import Contact from "./pages/Contact";
 import Success from "./pages/Success";
 import Videos from "./pages/Videos";
 import WarehouseSolution from "./pages/WarehouseSolution";
+import WindEnergy from "./pages/WindEnergy";
+import BatteryStorage from "./pages/BatteryStorage";
 import logoImg from "./assets/image.png";
 import { MapPin } from "lucide-react";
 import HowItWorks from "./pages/HowItWorks";
@@ -76,6 +78,8 @@ function Layout() {
                   { name: "Home", path: "/" },
                   { name: "About", path: "/about" },
                   { name: "Warehouse", path: "/solutions/warehouse" },
+                  { name: "Wind Energy", path: "/solutions/wind" },
+                  { name: "Battery Storage", path: "/solutions/battery" },
                   { name: "Property Types", path: "/property-types" },
                   { name: "How It Works", path: "/how-it-works" },
                   { name: "Team", path: "/team" }
@@ -195,6 +199,8 @@ function Layout() {
                     { name: "Home", path: "/" },
                     { name: "About Us", path: "/about" },
                     { name: "Warehouse Solutions", path: "/solutions/warehouse" },
+                    { name: "Wind Energy", path: "/solutions/wind" },
+                    { name: "Battery Storage", path: "/solutions/battery" },
                     { name: "Property Types", path: "/property-types" },
                     { name: "How It Works", path: "/how-it-works" },
                     { name: "Team", path: "/team" },
@@ -282,6 +288,8 @@ function Layout() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/videos" element={<Videos />} />
         <Route path="/solutions/warehouse" element={<WarehouseSolution />} />
+        <Route path="/solutions/wind" element={<WindEnergy />} />
+        <Route path="/solutions/battery" element={<BatteryStorage />} />
         <Route path="/property-types" element={<PropertyTypes />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
       </Routes>
