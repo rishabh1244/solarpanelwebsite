@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-	Phone, Mail, Clock, MapPin, ChevronRight,
-	CheckCircle2, ArrowRight
-} from "lucide-react";
+import { Phone, Mail, Clock, MapPin, ChevronRight, CheckCircle2, ArrowRight, Lock } from "lucide-react";
 
 function Contact() {
 	const [formName, setFormName] = useState("");
@@ -14,148 +11,131 @@ function Contact() {
 	}, []);
 
 	return (
-		<div className="min-h-screen bg-[#05070b] text-white font-sans selection:bg-[#ff7a00]/30 selection:text-[#ff7a00]">
+		<div className="min-h-screen bg-[#0a0b0f] text-white font-sans">
 
-			{/* ===== 1. HERO SECTION ===== */}
+			{/* ============================================================
+          1. HERO – breadcrumb left / form right / bg image full-bleed
+         ============================================================ */}
 			<section
-				className="relative min-h-[85vh] flex flex-col justify-center pt-32 pb-20 overflow-hidden bg-cover bg-center"
+				className="relative pt-28 pb-16 bg-cover bg-center"
 				style={{
-					backgroundImage: "linear-gradient(to right, rgba(5,7,11,0.9) 0%, rgba(5,7,11,0.7) 50%, rgba(5,7,11,0.4) 100%), url('/img/contact-hero.jpg')"
+					backgroundImage:
+						"linear-gradient(to right, rgba(8,9,14,0.96) 0%, rgba(8,9,14,0.88) 42%, rgba(8,9,14,0.60) 68%, rgba(8,9,14,0.30) 100%), url('/img/contact/hero-bg.jpg')",
+					minHeight: "88vh",
 				}}
 			>
-				<div className="w-full px-[50px] relative z-10">
+				<div className="w-full px-[50px] flex flex-col h-full">
 					{/* Breadcrumb */}
-					<div className="flex items-center gap-2 type-body-sm font-bold text-gray-400 tracking-wider uppercase mb-12">
-						<Link to="/" className="text-white hover:text-[#ff7a00] transition-colors">Home</Link>
-						<ChevronRight size={14} />
-						<span className="text-[#ff7a00]">Contact Us</span>
-					</div>
+					<nav className="flex items-center gap-2 text-[13px] text-gray-300 mb-10">
+						<Link to="/" className="hover:text-[#ff7a00] transition-colors">Home</Link>
+						<ChevronRight size={13} className="opacity-50" />
+						<span>Contact Us</span>
+					</nav>
 
-					<div className="grid lg:grid-cols-12 gap-16 items-start">
-						{/* Left Content */}
-						<div className="lg:col-span-7">
-							<div className="mb-4 text-[#ff7a00] type-body font-bold tracking-[3px] uppercase">
+					<div className="grid lg:grid-cols-12 gap-8 items-start flex-1">
+						{/* ── LEFT COPY ── */}
+						<div className="lg:col-span-7 flex flex-col justify-center py-6">
+							<p className="text-[#ff7a00] text-[13px] font-bold tracking-[2px] uppercase mb-5">
 								WE'RE HERE TO HELP
-							</div>
-							<h1 className="!text-white type-hero mb-8 leading-[1.1]">
+							</p>
+
+							<h1 className="text-white font-extrabold leading-[1.1] mb-6"
+								style={{ fontSize: "clamp(40px, 5.5vw, 68px)" }}>
 								Let's Build a<br />
 								Smarter Energy<br />
 								Future—<span className="text-[#ff7a00]">Together.</span>
 							</h1>
-							<p className="type-body-lg text-gray-300 mb-12 max-w-xl">
+
+							<p className="text-gray-300 text-[17px] leading-relaxed max-w-[480px] mb-12 font-light">
 								Have a question, project idea, or looking for more information? Our team is ready to help you unlock the potential of your property with AI-powered energy solutions.
 							</p>
 
-							{/* Quick Contact Info */}
-							<div className="grid sm:grid-cols-3 gap-8">
-								<div className="flex items-center gap-4">
-									<div className="w-12 h-12 rounded-full border border-[#ff7a00]/30 flex items-center justify-center text-[#ff7a00] bg-[#ff7a00]/5">
-										<Phone size={20} />
+							{/* Three contact-info pills */}
+							<div className="flex flex-wrap gap-8">
+								{[
+									{ icon: <Phone size={20} />, title: "Call Us", sub: "(609) 555-0123" },
+									{ icon: <Mail size={20} />, title: "Email Us", sub: "hello@techopsglobal.com" },
+									{ icon: <Clock size={20} />, title: "Business Hours", sub: "Mon - Fri: 8AM – 6PM EST" },
+								].map((item, i) => (
+									<div key={i} className="flex items-center gap-4">
+										<div className="w-12 h-12 rounded-full border border-[#ff7a00] flex items-center justify-center text-[#ff7a00] shrink-0">
+											{item.icon}
+										</div>
+										<div>
+											<p className="text-white font-bold text-[14px] mb-0.5">{item.title}</p>
+											<p className="text-gray-400 text-[13px]">{item.sub}</p>
+										</div>
 									</div>
-									<div>
-										<div className="text-gray-500 text-[12px] font-bold uppercase tracking-wider mb-1">Call Us</div>
-										<div className="text-white font-bold">(609) 555-0123</div>
-									</div>
-								</div>
-								<div className="flex items-center gap-4">
-									<div className="w-12 h-12 rounded-full border border-[#ff7a00]/30 flex items-center justify-center text-[#ff7a00] bg-[#ff7a00]/5">
-										<Mail size={20} />
-									</div>
-									<div>
-										<div className="text-gray-500 text-[12px] font-bold uppercase tracking-wider mb-1">Email Us</div>
-										<div className="text-white font-bold">hello@techopsglobal.com</div>
-									</div>
-								</div>
-								<div className="flex items-center gap-4">
-									<div className="w-12 h-12 rounded-full border border-[#ff7a00]/30 flex items-center justify-center text-[#ff7a00] bg-[#ff7a00]/5">
-										<Clock size={20} />
-									</div>
-									<div>
-										<div className="text-gray-500 text-[12px] font-bold uppercase tracking-wider mb-1">Business Hours</div>
-										<div className="text-white font-bold">Mon - Fri: 8AM - 6PM EST</div>
-									</div>
-								</div>
+								))}
 							</div>
 						</div>
 
-						{/* Right Form */}
+						{/* ── RIGHT FORM ── */}
 						<div className="lg:col-span-5">
-							<div className="bg-[#0d0f15]/80 backdrop-blur-xl border border-white/10 rounded-2xl p-8 lg:p-10 shadow-2xl">
-								<h3 className="!text-white text-[24px] font-extrabold mb-8">Send Us a Message</h3>
-								<form action="https://formsubmit.co/matrikaventures2020@gmail.com" method="POST" className="space-y-5">
-									<input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.origin + "/success" : "https://techops-global.com/success"} />
-									<input type="hidden" name="_subject" value={`New Contact Submission By ${formName || 'a User'} From Techops Global`} />
+							<div className="bg-[#0d0f15]/95 border border-white/8 rounded-xl shadow-2xl p-8 backdrop-blur-md">
+								<h3 className="text-white font-bold text-[22px] mb-10">Send Us a Message</h3>
 
-									<div>
+								<form
+									action="https://formsubmit.co/matrikaventures2020@gmail.com"
+									method="POST"
+									className="flex flex-col gap-3"
+								>
+									<input type="hidden" name="_next"
+										value={typeof window !== "undefined"
+											? window.location.origin + "/success"
+											: "https://techops-global.com/success"} />
+									<input type="hidden" name="_subject"
+										value={`New Contact from ${formName || "a user"} – TechOps Global`} />
+
+									{[
+										{ name: "name", placeholder: "Full Name*", type: "text", onChange: e => setFormName(e.target.value) },
+										{ name: "email", placeholder: "Work Email*", type: "email", onChange: undefined },
+										{ name: "phone", placeholder: "Phone Number*", type: "tel", onChange: undefined },
+										{ name: "company", placeholder: "Company Name*", type: "text", onChange: undefined },
+									].map(field => (
 										<input
-											type="text"
-											name="name"
-											placeholder="Full Name*"
+											key={field.name}
+											type={field.type}
+											name={field.name}
+											placeholder={field.placeholder}
 											required
-											onChange={(e) => setFormName(e.target.value)}
-											className="w-full bg-[#05070b] border border-white/10 rounded-lg px-5 py-4 text-white placeholder:text-gray-600 focus:border-[#ff7a00] focus:ring-1 focus:ring-[#ff7a00] outline-none transition-all"
+											onChange={field.onChange}
+											className="w-full bg-[#060810] border border-white/8 rounded-md px-4 py-3 text-white placeholder:text-gray-500 text-[14px] focus:border-[#ff7a00] outline-none transition-colors"
 										/>
-									</div>
-									<div>
-										<input
-											type="email"
-											name="email"
-											placeholder="Work Email*"
-											required
-											className="w-full bg-[#05070b] border border-white/10 rounded-lg px-5 py-4 text-white placeholder:text-gray-600 focus:border-[#ff7a00] focus:ring-1 focus:ring-[#ff7a00] outline-none transition-all"
-										/>
-									</div>
-									<div>
-										<input
-											type="tel"
-											name="phone"
-											placeholder="Phone Number*"
-											required
-											className="w-full bg-[#05070b] border border-white/10 rounded-lg px-5 py-4 text-white placeholder:text-gray-600 focus:border-[#ff7a00] focus:ring-1 focus:ring-[#ff7a00] outline-none transition-all"
-										/>
-									</div>
-									<div>
-										<input
-											type="text"
-											name="company"
-											placeholder="Company Name*"
-											required
-											className="w-full bg-[#05070b] border border-white/10 rounded-lg px-5 py-4 text-white placeholder:text-gray-600 focus:border-[#ff7a00] focus:ring-1 focus:ring-[#ff7a00] outline-none transition-all"
-										/>
-									</div>
-									<div>
+									))}
+
+									<div className="relative">
 										<select
 											name="interest"
 											required
-											className="w-full bg-[#05070b] border border-white/10 rounded-lg px-5 py-4 text-white focus:border-[#ff7a00] focus:ring-1 focus:ring-[#ff7a00] outline-none transition-all appearance-none"
+											defaultValue=""
+											className="w-full bg-[#060810] border border-white/8 rounded-md px-4 py-3 text-gray-500 text-[14px] focus:border-[#ff7a00] outline-none transition-colors appearance-none"
 										>
-											<option value="" disabled selected>I'm interested in...*</option>
-											<option value="Solar Energy">Solar Energy</option>
-											<option value="Battery Storage">Battery Storage</option>
-											<option value="Wind Energy">Wind Energy</option>
-											<option value="VPP Solutions">VPP Solutions</option>
-											<option value="Other">Other</option>
+											<option value="" disabled>I'm interested in...*</option>
+											{["Solar Energy", "Battery Storage", "Wind Energy", "VPP Solutions", "Parking Lots", "Other"].map(v => (
+												<option key={v} value={v} className="text-white bg-[#0d0f15]">{v}</option>
+											))}
 										</select>
+										<ChevronRight size={14} className="absolute right-4 top-1/2 -translate-y-1/2 rotate-90 text-gray-500 pointer-events-none" />
 									</div>
-									<div>
-										<textarea
-											name="message"
-											placeholder="Tell us about your project or inquiry...*"
-											required
-											rows="4"
-											className="w-full bg-[#05070b] border border-white/10 rounded-lg px-5 py-4 text-white placeholder:text-gray-600 focus:border-[#ff7a00] focus:ring-1 focus:ring-[#ff7a00] outline-none transition-all resize-none"
-										></textarea>
-									</div>
+
+									<textarea
+										name="message"
+										placeholder="Tell us about your project or inquiry...*"
+										required
+										rows={4}
+										className="w-full bg-[#060810] border border-white/8 rounded-md px-4 py-3 text-white placeholder:text-gray-500 text-[14px] focus:border-[#ff7a00] outline-none transition-colors resize-none"
+									/>
 
 									<button
 										type="submit"
-										className="w-full bg-[#ff7a00] hover:bg-[#ff8a1c] text-black font-extrabold py-4 rounded-lg transition-all uppercase tracking-wider flex items-center justify-center gap-2"
+										className="w-full bg-[#ff7a00] hover:bg-[#ff8a1c] text-black font-bold py-3.5 rounded-md text-[14px] tracking-wider uppercase flex items-center justify-center gap-2 mt-1 transition-colors"
 									>
-										SEND MESSAGE <ArrowRight size={18} />
+										SEND MESSAGE <ArrowRight size={16} />
 									</button>
 
-									<p className="text-center text-gray-500 text-[12px] flex items-center justify-center gap-2">
-										<CheckCircle2 size={12} /> Your information is secure and confidential.
+									<p className="text-center text-gray-500 text-[12px] flex items-center justify-center gap-1.5 mt-0.5">
+										<Lock size={11} /> Your information is secure and confidential.
 									</p>
 								</form>
 							</div>
@@ -164,67 +144,70 @@ function Contact() {
 				</div>
 			</section>
 
-			{/* ===== 2. GET IN TOUCH SECTION ===== */}
-			<section className="py-24 bg-[#07090e] border-b border-white/5">
+			{/* ============================================================
+          2. GET IN TOUCH – 4 info cards + 1 map card
+         ============================================================ */}
+			<section className="py-20 bg-[#0a0b0f]">
 				<div className="w-full px-[50px]">
-					<div className="flex items-center gap-6 mb-16">
-						<div className="h-[1px] bg-white/10 flex-1" />
-						<h2 className="!text-white text-[24px] font-extrabold tracking-[4px] uppercase whitespace-nowrap">
-							Get in Touch
-						</h2>
-						<div className="h-[1px] bg-white/10 flex-1" />
+					{/* Section title */}
+					<div className="flex items-center justify-center gap-5 mb-12">
+						<span className="flex-1 max-w-[80px] h-[1px] bg-gradient-to-r from-transparent to-[#ff7a00]" />
+						<h2 className="text-white font-bold text-[26px]">Get in Touch</h2>
+						<span className="flex-1 max-w-[80px] h-[1px] bg-gradient-to-l from-transparent to-[#ff7a00]" />
 					</div>
 
-					<div className="grid lg:grid-cols-12 gap-8">
-						{/* Info Cards */}
-						<div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
-							{[
-								{
-									icon: <MapPin size={24} />,
-									title: "Our Headquarters",
-									details: ["TechOps Global, Inc.", "200 Princeton Hightstown Rd", "Suite 201", "Princeton, NJ 08540", "USA"]
-								},
-								{
-									icon: <Phone size={24} />,
-									title: "Call Us",
-									details: ["(609) 555-0123", "", "Toll Free:", "(833) TECH-OPS", "(833-832-4677)"]
-								},
-								{
-									icon: <Mail size={24} />,
-									title: "Email Us",
-									details: ["hello@techopsglobal.com", "info@techopsglobal.com", "", "Investor Relations", "investors@techopsglobal.com"]
-								},
-								{
-									icon: <Clock size={24} />,
-									title: "Business Hours",
-									details: ["Monday – Friday", "8:00 AM – 6:00 PM EST", "", "Saturday – Sunday", "By Appointment"]
-								}
-							].map((card, i) => (
-								<div key={i} className="bg-[#0d0f15] border border-white/10 rounded-xl p-8 hover:border-[#ff7a00]/30 transition-all group">
-									<div className="text-[#ff7a00] mb-6 group-hover:scale-110 transition-transform duration-300">{card.icon}</div>
-									<h4 className="!text-white text-[20px] font-bold mb-4">{card.title}</h4>
-									<div className="space-y-1">
-										{card.details.map((line, j) => (
-											<p key={j} className="text-gray-400 text-[15px] leading-relaxed">{line}</p>
-										))}
-									</div>
+					{/* 5-column grid */}
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+						{/* 4 info cards */}
+						{[
+							{
+								icon: <MapPin size={26} strokeWidth={1.5} />,
+								title: "Our Headquarters",
+								lines: ["TechOps Global, Inc.", "200 Princeton Hightstown Rd", "Suite 201", "Princeton, NJ 08540", "USA"],
+							},
+							{
+								icon: <Phone size={26} strokeWidth={1.5} />,
+								title: "Call Us",
+								lines: ["(609) 555-0123", "", "Toll Free:", "(833) TECH-OPS", "(833-832-4677)"],
+							},
+							{
+								icon: <Mail size={26} strokeWidth={1.5} />,
+								title: "Email Us",
+								lines: ["hello@techopsglobal.com", "info@techopsglobal.com", "", "Investor Relations", "investors@techopsglobal.com"],
+							},
+							{
+								icon: <Clock size={26} strokeWidth={1.5} />,
+								title: "Business Hours",
+								lines: ["Monday – Friday", "8:00 AM – 6:00 PM EST", "", "Saturday – Sunday", "By Appointment"],
+							},
+						].map((card, i) => (
+							<div
+								key={i}
+								className="bg-[#0d0f15] border border-white/6 rounded-xl p-7 flex flex-col items-center text-center hover:border-white/12 transition-colors"
+							>
+								<div className="w-14 h-14 rounded-full border border-[#ff7a00] text-[#ff7a00] flex items-center justify-center mb-5 shrink-0">
+									{card.icon}
 								</div>
-							))}
-						</div>
+								<h4 className="text-white font-bold text-[15px] mb-4">{card.title}</h4>
+								<div className="space-y-[3px]">
+									{card.lines.map((line, j) => (
+										<p key={j} className="text-gray-400 text-[13px] leading-snug m-0 min-h-[18px]">{line}</p>
+									))}
+								</div>
+							</div>
+						))}
 
-						{/* Map */}
-						<div className="lg:col-span-5 relative rounded-xl overflow-hidden border border-white/10 min-h-[400px]">
-							<div className="absolute inset-0 bg-[#0a0c11]">
-								{/* Placeholder for Map */}
-								<div className="w-full h-full bg-[#111318] flex items-center justify-center">
-									<div className="relative">
-										<div className="w-12 h-12 bg-[#ff7a00] rounded-full flex items-center justify-center animate-pulse">
-											<MapPin size={24} className="text-black" />
-										</div>
-										<div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-black/90 backdrop-blur-md border border-white/20 px-4 py-2 rounded text-white text-[14px] font-bold whitespace-nowrap shadow-2xl">
-											Princeton, NJ
-										</div>
-									</div>
+						{/* Map card – takes 1 column in the 5-col grid */}
+						<div className="relative rounded-xl overflow-hidden border border-white/6 bg-[#0d0f15] min-h-[280px]">
+							<img
+								src="/img/contact/map-dark.jpg"
+								alt="Map – Princeton NJ"
+								className="absolute inset-0 w-full h-full object-cover opacity-40 grayscale saturate-0"
+							/>
+							<div className="absolute inset-0 flex flex-col items-center justify-center">
+								<MapPin size={38} fill="#ff7a00" className="text-black drop-shadow-lg mb-2" />
+								<div className="bg-black/80 border border-white/10 px-4 py-1.5 rounded text-white text-[13px] font-bold shadow-xl">
+									Princeton, NJ
 								</div>
 							</div>
 						</div>
@@ -232,53 +215,55 @@ function Contact() {
 				</div>
 			</section>
 
-			{/* ===== 3. OUR LOCATIONS SECTION ===== */}
-			<section className="py-24 bg-[#05070b] border-b border-white/5">
+			{/* ============================================================
+          3. OUR LOCATIONS – 3 city cards with real photos on top
+         ============================================================ */}
+			<section className="py-20 bg-[#0a0b0f] border-t border-white/5">
 				<div className="w-full px-[50px]">
-					<div className="flex items-center gap-6 mb-16">
-						<div className="h-[1px] bg-white/10 flex-1" />
-						<h2 className="!text-white text-[24px] font-extrabold tracking-[4px] uppercase whitespace-nowrap">
-							Our Locations
-						</h2>
-						<div className="h-[1px] bg-white/10 flex-1" />
+					<div className="flex items-center justify-center gap-5 mb-12">
+						<h2 className="text-white font-bold text-[26px]">Our Locations</h2>
 					</div>
 
-					<div className="grid md:grid-cols-3 gap-8">
+					<div className="grid md:grid-cols-3 gap-6">
 						{[
 							{
 								city: "Princeton, New Jersey",
 								type: "Headquarters",
+								img: "/img/contact/princeton.jpg",
 								address: ["200 Princeton Hightstown Rd", "Suite 201", "Princeton, NJ 08540", "USA"],
-								img: "/unsplash/princeton.jpg"
 							},
 							{
 								city: "Houston, Texas",
 								type: "Office",
+								img: "/img/contact/houston.jpg",
 								address: ["5444 Westheimer Rd", "Suite 1000", "Houston, TX 77056", "USA"],
-								img: "/unsplash/houston.jpg"
 							},
 							{
 								city: "Los Angeles, California",
 								type: "Office",
+								img: "/img/contact/los-angeles.jpg",
 								address: ["1900 Avenue of the Stars", "Suite 200", "Los Angeles, CA 90067", "USA"],
-								img: "/unsplash/la.jpg"
-							}
+							},
 						].map((loc, i) => (
-							<div key={i} className="bg-[#0d0f15] border border-white/10 rounded-xl overflow-hidden group hover:border-[#ff7a00]/30 transition-all">
-								<div className="h-[240px] overflow-hidden relative bg-[#1a1c23]">
-									<div className="absolute inset-0 bg-gradient-to-t from-[#0d0f15] to-transparent opacity-60" />
-									<div className="absolute inset-0 flex items-center justify-center text-white/20 font-bold text-[24px] uppercase tracking-widest">
-										{loc.city.split(',')[0]}
-									</div>
+							<div
+								key={i}
+								className="bg-[#0d0f15] border border-white/6 rounded-xl overflow-hidden group hover:border-white/12 transition-colors"
+							>
+								{/* Photo */}
+								<div className="h-[280px] overflow-hidden relative">
+									<img
+										src={loc.img}
+										alt={loc.city}
+										className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90"
+									/>
 								</div>
-								<div className="p-8">
-									<h4 className="!text-white text-[22px] font-extrabold mb-1">{loc.city}</h4>
-									<div className="text-[#ff7a00] text-[12px] font-bold tracking-wider uppercase mb-6">{loc.type}</div>
-									<div className="space-y-1">
-										{loc.address.map((line, j) => (
-											<p key={j} className="text-gray-400 text-[16px] leading-relaxed">{line}</p>
-										))}
-									</div>
+								{/* Text */}
+								<div className="p-7">
+									<h4 className="text-white font-bold text-[17px] mb-1">{loc.city}</h4>
+									<p className="text-[#ff7a00] text-[12px] font-bold uppercase tracking-wider mb-4">{loc.type}</p>
+									{loc.address.map((line, j) => (
+										<p key={j} className="text-gray-400 text-[14px] leading-snug m-0">{line}</p>
+									))}
 								</div>
 							</div>
 						))}
@@ -286,43 +271,49 @@ function Contact() {
 				</div>
 			</section>
 
-			{/* ===== 4. CTA SECTION ===== */}
-			<section className="py-20 bg-[#05070b]">
+			{/* ============================================================
+          4. CTA BLOCK – "Let's Talk About Your Project"
+         ============================================================ */}
+			<section className="py-16 bg-[#0a0b0f]">
 				<div className="w-full px-[50px]">
 					<div
-						className="relative border border-white/10 rounded-2xl p-12 lg:p-16 overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-12"
+						className="relative rounded-xl overflow-hidden border border-white/6 p-10 lg:p-14 flex flex-col lg:flex-row items-center gap-10"
 						style={{
-							backgroundImage: "linear-gradient(to right, rgba(10,12,18,0.95) 0%, rgba(10,12,18,0.8) 100%), url('/unsplash/cta-bg.jpg')",
-							backgroundSize: 'cover',
-							backgroundPosition: 'center'
+							backgroundImage:
+								"linear-gradient(to right, rgba(9,11,16,0.97) 0%, rgba(9,11,16,0.88) 55%, rgba(9,11,16,0.70) 100%), url('/img/contact/hero-bg.jpg')",
+							backgroundSize: "cover",
+							backgroundPosition: "center",
 						}}
 					>
-						<div className="absolute left-0 top-0 bottom-0 w-[4px] bg-[#ff7a00]" />
-
-						<div className="lg:w-1/2 relative z-10">
-							<h2 className="!text-white text-[36px] lg:text-[48px] font-extrabold leading-[1.1] mb-6">
-								Let's Talk About<br />Your Project
+						{/* Left text */}
+						<div className="lg:w-5/12">
+							<h2 className="text-white font-extrabold text-[30px] lg:text-[40px] leading-[1.2] mb-5">
+								Let's Talk About Your Project
 							</h2>
-							<p className="text-gray-300 text-[18px] leading-relaxed max-w-xl">
+							<p className="text-gray-300 text-[16px] leading-relaxed font-light">
 								Whether you have a single site or a portfolio, we'll help you transform your real estate into high-performing energy assets with zero capex and maximum returns.
 							</p>
 						</div>
 
-						<div className="lg:w-1/2 relative z-10 w-full">
-							<div className="grid sm:grid-cols-2 gap-6 mb-10">
-								{[
-									"Zero Capex", "Sustainable Impact", "Long-Term Value", "Maximum Performance"
-								].map((item, i) => (
-									<div key={i} className="flex items-center gap-3 text-white text-[17px] font-bold tracking-wider">
-										<CheckCircle2 size={20} className="text-[#ff7a00]" /> {item}
+						{/* Middle checklist */}
+						<div className="lg:w-4/12">
+							<div className="grid grid-cols-2 gap-x-6 gap-y-4">
+								{["Zero Capex", "Sustainable Impact", "Long-Term Value", "Maximum Performance"].map((item, i) => (
+									<div key={i} className="flex items-center gap-2.5 text-white font-bold text-[14px]">
+										<CheckCircle2 size={18} className="text-[#ff7a00] shrink-0" />
+										{item}
 									</div>
 								))}
 							</div>
+						</div>
+
+						{/* Right CTA button */}
+						<div className="lg:w-3/12 flex justify-end">
 							<Link
 								to="/contact"
-								className="inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-[#ff7a00] hover:bg-[#ff8a1c] text-black font-extrabold px-10 py-5 rounded-lg text-[16px] uppercase tracking-wider transition-all shadow-[0_4px_25px_rgba(255,122,0,0.4)]"
+								className="inline-flex items-center gap-2 bg-[#ff7a00] hover:bg-[#ff8a1c] text-black font-bold px-7 py-4 rounded-md text-[13px] uppercase tracking-wider transition-colors whitespace-nowrap shadow-[0_4px_20px_rgba(255,122,0,0.35)]"
 							>
-								GET YOUR FREE SITE ASSESSMENT <ArrowRight size={20} />
+								GET YOUR FREE SITE ASSESSMENT <ArrowRight size={16} />
 							</Link>
 						</div>
 					</div>
