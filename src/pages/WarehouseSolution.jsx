@@ -19,7 +19,7 @@ export default function WarehouseSolution() {
       <section
         className="relative min-h-[90vh] flex flex-col justify-center pt-32 pb-24 border-b border-white/5 overflow-hidden bg-cover bg-center"
         style={{
-          backgroundImage: "linear-gradient(to right, rgba(5, 7, 11, 0.96) 30%, rgba(5, 7, 11, 0.75) 60%, rgba(5, 7, 11, 0.45) 100%), url('/solutiondemo/warehouse-solar.png')"
+          backgroundImage: "linear-gradient(to right, rgba(5, 7, 11, 0.96) 30%, rgba(5, 7, 11, 0.75) 60%, rgba(5, 7, 11, 0.45) 100%), url('/unsplash/warehouse-solar.jpg')"
         }}
       >
         {/* Top Breadcrumb Inside Hero */}
@@ -391,7 +391,7 @@ export default function WarehouseSolution() {
                 {/* Photo (Right Half) */}
                 <div
                   className="w-full md:w-1/2 min-h-[300px] bg-cover bg-center border-l border-white/10"
-                  style={{ backgroundImage: "url('/solutiondemo/warehouse-solar.png')" }}
+                  style={{ backgroundImage: "url('/unsplash/warehouse-solar.jpg')" }}
                 >
                 </div>
 
@@ -435,7 +435,7 @@ export default function WarehouseSolution() {
           <div
             className="border border-white/10 rounded-2xl p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden shadow-2xl"
             style={{
-              backgroundImage: "linear-gradient(to right, rgba(10,12,18,0.97) 0%, rgba(10,12,18,0.90) 50%, rgba(10,12,18,0.75) 100%), url('/solutiondemo/warehouse-solar.png')",
+              backgroundImage: "linear-gradient(to right, rgba(10,12,18,0.97) 0%, rgba(10,12,18,0.90) 50%, rgba(10,12,18,0.75) 100%), url('/unsplash/warehouse-solar.jpg')",
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}

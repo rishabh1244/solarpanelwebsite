@@ -113,7 +113,7 @@ export default function Home() {
 
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[75vh] flex items-center pt-24 pb-16 lg:py-0 border-b border-white/5 overflow-hidden">
-        <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: "url('/demo/herobg.png')" }}>
+        <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: "url('/unsplash/hero-bg.jpg')" }}>
           <div className="absolute inset-0 bg-gradient-to-r from-[#05070a] via-[#05070a]/60 to-transparent"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-[#05070a] via-transparent to-transparent"></div>
           {/* Sunset glow effect on the right */}
@@ -266,7 +266,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                img: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=600",
+                img: "/unsplash/warehouse-solar.jpg",
                 icon: <Building size={20} />,
                 color: "text-[#ff7a00] border-[#ff7a00]/30",
                 title: "WAREHOUSE &\nLOGISTICS HUBS",
@@ -276,7 +276,7 @@ export default function Home() {
                 link: "/solutions/warehouse"
               },
               {
-                img: "/demo/buffer1.png",
+                img: "/unsplash/buffer-land.jpg",
                 icon: <TreePine size={20} />,
                 color: "text-[#8dff4d] border-[#8dff4d]/30",
                 title: "IDLE LAND &\nBUFFER ACREAGE",
@@ -286,7 +286,7 @@ export default function Home() {
                 link: "#"
               },
               {
-                img: "/demo/ChatGPT%20Image%20May%2027,%202026,%2005_06_12%20PM.png",
+                img: "/unsplash/parking-solar.jpg",
                 icon: <CarFront size={20} />,
                 color: "text-[#8dff4d] border-[#8dff4d]/30",
                 title: "COMMERCIAL\nPARKING LOTS",
@@ -527,7 +527,7 @@ export default function Home() {
       <section className="py-[60px] bg-[#05070a] relative border-t border-white/5">
         <div className="w-full px-[50px] relative z-10">
           <div className="bg-[#111318] border border-white/5 rounded p-12 lg:p-14 flex flex-col lg:flex-row items-center justify-between gap-10 relative overflow-hidden">
-            <div className="absolute inset-0 bg-cover bg-center opacity-50" style={{ backgroundImage: "url('/demo/background.png')" }}></div>
+            <div className="absolute inset-0 bg-cover bg-center opacity-50" style={{ backgroundImage: "url('/unsplash/cta-bg.jpg')" }}></div>
             <div className="absolute inset-0 bg-gradient-to-r from-[#111318] via-[#111318]/90 to-[#111318]/50"></div>
             <div className="absolute top-0 right-0 w-[400px] h-full bg-gradient-to-l from-[#ff7a00]/20 to-transparent pointer-events-none"></div>
 

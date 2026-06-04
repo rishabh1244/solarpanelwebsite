@@ -87,17 +87,17 @@ function Services() {
 					</div>
 					<div className="row">
 						{[
-							{ img: "assets/images/resource/service1.png", title: "1. Solar Energy Systems", desc: "Custom solar power solutions for commercial, industrial, and utility-scale applications." },
-							{ img: "assets/images/resource/service2.png", title: "2. Wind Power Infrastructure", desc: "Efficient wind energy systems designed for long-term performance and sustainability." },
-							{ img: "assets/images/resource/service3.png", title: "3. Battery Energy Storage", desc: "Advanced storage systems for grid stability, backup power, and energy optimization." },
-							{ img: "assets/images/resource/service1.png", title: "4. Industrial Power Operations", desc: "Reliable plant operations, maintenance, and performance management." },
-							{ img: "assets/images/resource/service2.png", title: "5. Engineering & Technical Consulting", desc: "Strategic guidance for energy planning, design, compliance, and execution." },
-							{ img: "assets/images/resource/service3.png", title: "6. EPC Project Support", desc: "End-to-end engineering, procurement, and construction management solutions." },
+							{ img: "/unsplash/service-solar.jpg", title: "1. Solar Energy Systems", desc: "Custom solar power solutions for commercial, industrial, and utility-scale applications." },
+							{ img: "/unsplash/service-wind.jpg", title: "2. Wind Power Infrastructure", desc: "Efficient wind energy systems designed for long-term performance and sustainability." },
+							{ img: "/unsplash/service-battery.jpg", title: "3. Battery Energy Storage", desc: "Advanced storage systems for grid stability, backup power, and energy optimization." },
+							{ img: "/unsplash/service-industrial.jpg", title: "4. Industrial Power Operations", desc: "Reliable plant operations, maintenance, and performance management." },
+							{ img: "/unsplash/service-engineering.jpg", title: "5. Engineering & Technical Consulting", desc: "Strategic guidance for energy planning, design, compliance, and execution." },
+							{ img: "/unsplash/service-epc.jpg", title: "6. EPC Project Support", desc: "End-to-end engineering, procurement, and construction management solutions." },
 						].map((service, index) => (
 							<div className="col-lg-4 col-md-6" key={index}>
 								<div className="service-box style-two">
-									<div className="service-thumb">
-										<img src={service.img} alt="" />
+									<div className="service-thumb aspect-video overflow-hidden bg-[#05070b] flex items-center justify-center">
+										<img src={service.img} alt="" className="w-full h-full object-contain" />
 										<div className="service-content">
 											<div className="service-text">
 												<h4 className="type-card"><Link to="/contact">{service.title}</Link></h4>
@@ -119,7 +119,7 @@ function Services() {
 			{/*==================================================*/}
 			{/* Start Solar Panel  Call Do Action  Section */}
 			{/*==================================================*/}
-			<div className="call-do-action-section" style={{ height: '450px', backgroundImage: 'url("/assets/images/resource/call-do-bg.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+			<div className="call-do-action-section" style={{ height: '450px', backgroundImage: 'url("/unsplash/call-do-bg.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-12">
@@ -138,7 +138,7 @@ function Services() {
 			{/*==================================================*/}
 			<div className="choose-us-section" style={{ marginTop: '-220px', position: 'relative', zIndex: 10 }}>
 				<div className="container">
-					<div className="row choose" style={{ backgroundImage: 'url("/assets/images/resource/choose-bg.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+					<div className="row choose" style={{ backgroundImage: 'url("/unsplash/choose-bg.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
 						<div className="col-lg-6 col-md-12">
 							<div className="section-title">
 								<div className="section-sub-title choose">
@@ -153,7 +153,7 @@ function Services() {
 							</div>
 							<div className="choose-us-content">
 								<div className="choose-us-thumb">
-									<img src="assets/images/resource/choose-thumb.png" alt="" />
+									<img src="/unsplash/choose-thumb.jpg" alt="" />
 								</div>
 								<div className="choose-us-list">
 									<ul className="type-body">

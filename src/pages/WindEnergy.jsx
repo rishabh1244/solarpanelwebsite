@@ -20,7 +20,7 @@ export default function WindEnergy() {
                 className="relative min-h-[90vh] flex flex-col justify-center pt-32 pb-24 border-b border-white/5 overflow-hidden bg-cover bg-center"
                 style={{
                     backgroundImage:
-                        "linear-gradient(to right, rgba(5,7,11,0.96) 30%, rgba(5,7,11,0.75) 60%, rgba(5,7,11,0.40) 100%), url('/img/wind/hero.jpg')",
+                        "linear-gradient(to right, rgba(5,7,11,0.96) 30%, rgba(5,7,11,0.75) 60%, rgba(5,7,11,0.40) 100%), url('/unsplash/wind-turbines.jpg')",
                 }}
             >
                 {/* Breadcrumb */}
@@ -193,25 +193,25 @@ export default function WindEnergy() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {[
                             {
-                                img: "/img/wind/onshore.jpg",
+                                img: "/unsplash/wind-onshore.jpg",
                                 title: "Onshore Wind Projects",
                                 desc: "Cost-effective, scalable, and ideal for large land parcels.",
                                 bullets: ["High energy yield", "Low operational impact", "Proven technology"],
                             },
                             {
-                                img: "/img/wind/community.jpg",
+                                img: "/unsplash/wind-community.jpg",
                                 title: "Community Wind",
                                 desc: "Local clean energy for communities and municipalities.",
                                 bullets: ["Community engagement", "Local economic benefits", "Green energy access"],
                             },
                             {
-                                img: "/img/wind/battery.jpg",
+                                img: "/unsplash/wind-battery.jpg",
                                 title: "Wind + Battery Storage",
                                 desc: "Store excess energy and maximize value with hybrid solutions.",
                                 bullets: ["Energy arbitrage", "Peak shaving", "Better grid stability"],
                             },
                             {
-                                img: "/img/wind/vpp.jpg",
+                                img: "/unsplash/wind-vpp.jpg",
                                 title: "Wind + VPP Integration",
                                 desc: "Participate in Virtual Power Plant and energy markets.",
                                 bullets: ["Demand response", "Capacity markets", "Ancillary services"],
@@ -327,7 +327,7 @@ export default function WindEnergy() {
                                 </div>
                                 <div
                                     className="w-full md:w-1/2 min-h-[300px] bg-cover bg-center border-l border-white/10"
-                                    style={{ backgroundImage: "url('/img/wind/casestudy.jpg')" }}
+                                    style={{ backgroundImage: "url('/unsplash/wind-turbines.jpg')" }}
                                 />
                             </div>
                         </div>
@@ -404,7 +404,7 @@ export default function WindEnergy() {
                         className="border border-white/10 rounded-2xl p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden shadow-2xl"
                         style={{
                             backgroundImage:
-                                "linear-gradient(to right, rgba(10,12,18,0.97) 0%, rgba(10,12,18,0.88) 55%, rgba(10,12,18,0.70) 100%), url('/img/wind/hero.jpg')",
+                                "linear-gradient(to right, rgba(10,12,18,0.97) 0%, rgba(10,12,18,0.88) 55%, rgba(10,12,18,0.70) 100%), url('/unsplash/wind-turbines.jpg')",
                             backgroundSize: "cover",
                             backgroundPosition: "center",
                         }}

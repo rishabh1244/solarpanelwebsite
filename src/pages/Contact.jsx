@@ -249,19 +249,19 @@ function Contact() {
 								city: "Princeton, New Jersey",
 								type: "Headquarters",
 								address: ["200 Princeton Hightstown Rd", "Suite 201", "Princeton, NJ 08540", "USA"],
-								img: "/img/locations/princeton.jpg"
+								img: "/unsplash/princeton.jpg"
 							},
 							{
 								city: "Houston, Texas",
 								type: "Office",
 								address: ["5444 Westheimer Rd", "Suite 1000", "Houston, TX 77056", "USA"],
-								img: "/img/locations/houston.jpg"
+								img: "/unsplash/houston.jpg"
 							},
 							{
 								city: "Los Angeles, California",
 								type: "Office",
 								address: ["1900 Avenue of the Stars", "Suite 200", "Los Angeles, CA 90067", "USA"],
-								img: "/img/locations/la.jpg"
+								img: "/unsplash/la.jpg"
 							}
 						].map((loc, i) => (
 							<div key={i} className="bg-[#0d0f15] border border-white/10 rounded-xl overflow-hidden group hover:border-[#ff7a00]/30 transition-all">
@@ -292,7 +292,7 @@ function Contact() {
 					<div
 						className="relative border border-white/10 rounded-2xl p-12 lg:p-16 overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-12"
 						style={{
-							backgroundImage: "linear-gradient(to right, rgba(10,12,18,0.95) 0%, rgba(10,12,18,0.8) 100%), url('/img/cta-bg.jpg')",
+							backgroundImage: "linear-gradient(to right, rgba(10,12,18,0.95) 0%, rgba(10,12,18,0.8) 100%), url('/unsplash/cta-bg.jpg')",
 							backgroundSize: 'cover',
 							backgroundPosition: 'center'
 						}}

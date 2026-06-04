@@ -19,60 +19,68 @@ import {
 export default function PropertyTypes() {
   const propertyCards = [
     {
+      id: "warehouse",
       title: "Warehouse & Logistics",
-      desc: "Power high-demand operations with solar, storage, and microgrids built for uptime and efficiency.",
-      img: "/solutiondemo/warehouse-solar.png",
+      desc: "Turn massive flat roofs into revenue-generating assets without disrupting operations.",
+      img: "/unsplash/warehouse-solar.jpg",
       icon: <Truck size={22} />,
       path: "/solutions/warehouse"
     },
     {
-      title: "Industrial",
-      desc: "Reduce energy costs and emissions across manufacturing and heavy industrial facilities.",
-      img: "/solutiondemo/industrial-solar.png",
+      id: "industrial",
+      title: "Industrial Manufacturing",
+      desc: "Offset heavy machinery loads and protect against peak demand charges.",
+      img: "/unsplash/industrial-solar.jpg",
       icon: <Factory size={22} />,
       path: "#"
     },
     {
-      title: "Retail",
-      desc: "Lower operating costs and improve sustainability for retail stores and shopping centers.",
-      img: "/solutiondemo/retail-solar.png",
+      id: "retail",
+      title: "Big Box Retail",
+      desc: "Enhance ESG profiles while lowering operating expenses for large retail footprints.",
+      img: "/unsplash/retail-solar.jpg",
       icon: <ShoppingCart size={22} />,
       path: "#"
     },
     {
-      title: "Commercial Office",
-      desc: "Sustainable, cost-effective energy solutions for office buildings and corporate campuses.",
-      img: "/solutiondemo/office-solar.png",
+      id: "office",
+      title: "Corporate Campuses",
+      desc: "Attract premium tenants with green energy and shaded solar carports.",
+      img: "/unsplash/office-solar.jpg",
       icon: <Building2 size={22} />,
       path: "#"
     },
     {
-      title: "Cold Storage",
-      desc: "Ensure reliable power and temperature control with resilient, on-site energy systems.",
-      img: "/solutiondemo/cold-storage-solar.png",
+      id: "cold-storage",
+      title: "Cold Storage Facilities",
+      desc: "Mitigate extreme energy costs associated with refrigeration and freezing.",
+      img: "/unsplash/cold-storage.jpg",
       icon: <Snowflake size={22} />,
       path: "#"
     },
     {
+      id: "data-center",
       title: "Data Centers",
-      desc: "Protect critical operations with clean, reliable power and advanced energy storage.",
-      img: "/solutiondemo/data-center-solar.png",
+      desc: "Ensure 100% uptime and meet aggressive sustainability targets.",
+      img: "/unsplash/data-center.jpg",
       icon: <Database size={22} />,
       path: "#"
     },
     {
-      title: "Multi-Tenant",
-      desc: "Flexible energy solutions designed for shared buildings and multi-tenant facilities.",
-      img: "/solutiondemo/multitenant-solar.png",
+      id: "multitenant",
+      title: "Multi-Tenant Commercial",
+      desc: "Navigate complex metering to deliver shared solar benefits to multiple tenants.",
+      img: "/unsplash/multitenant.jpg",
       icon: <Users size={22} />,
       path: "#"
     },
     {
-      title: "Parking Structures",
-      desc: "Turn underutilized space into clean energy assets while powering your operations.",
-      img: "/solutiondemo/parking-solar.png",
+      id: "parking",
+      title: "Commercial Parking Lots",
+      desc: "Generate power while providing shade and EV charging infrastructure.",
+      img: "/unsplash/parking-solar.jpg",
       icon: <span className="font-extrabold text-[20px] leading-none select-none">P</span>,
-      path: "#"
+      path: "/solutions/parking"
     }
   ];
 
@@ -116,7 +124,7 @@ export default function PropertyTypes() {
       <section
         className="relative pt-[100px] pb-[70px] md:pt-[130px] md:pb-[96px] lg:pt-[150px] lg:pb-[112px] bg-cover bg-center overflow-hidden"
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(5,7,11,0.95) 0%, rgba(5,7,11,0.85) 45%, rgba(5,7,11,0.2) 75%, rgba(5,7,11,0.05) 100%), url("/solutiondemo/warehouse-solar.png")`
+          backgroundImage: `linear-gradient(to right, rgba(5,7,11,0.95) 0%, rgba(5,7,11,0.85) 45%, rgba(5,7,11,0.2) 75%, rgba(5,7,11,0.05) 100%), url("/unsplash/warehouse-solar.jpg")`
         }}
       >
         {/* Radial grid overlay */}
@@ -265,7 +273,7 @@ export default function PropertyTypes() {
           <div
             className="rounded-2xl border border-white/10 p-10 md:p-14 overflow-hidden relative min-h-[250px] flex items-center bg-cover bg-center shadow-2xl"
             style={{
-              backgroundImage: `linear-gradient(to right, rgba(5,7,11,0.95) 45%, rgba(5,7,11,0.7) 100%), url("/solutiondemo/warehouse-solar.png")`,
+              backgroundImage: `linear-gradient(to right, rgba(5,7,11,0.95) 45%, rgba(5,7,11,0.7) 100%), url("/unsplash/warehouse-solar.jpg")`,
             }}
           >
             {/* Grid texture */}

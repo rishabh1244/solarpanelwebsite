@@ -46,7 +46,7 @@ export default function HowItWorks() {
       title: "Optimize",
       desc: "We continuously optimize your system to increase savings, extend equipment life, and maximize value.",
       icon: <DollarSign className="text-[#ff7a00]" size={22} />,
-      img: "/demo/optimize-dashboard.png"
+      img: "/unsplash/dashboard.jpg"
     }
   ];
 
@@ -90,7 +90,7 @@ export default function HowItWorks() {
       <section
         className="relative pt-[110px] pb-16 md:pt-[140px] md:pb-20 lg:pt-[180px] lg:pb-32 w-full overflow-hidden border-b border-white/5 bg-cover bg-center"
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(5,7,11,0.92) 40%, rgba(5,7,11,0.6) 100%), url("/solutiondemo/ChatGPT Image May 29, 2026, 10_05_44 AM.png")`,
+          backgroundImage: `linear-gradient(to right, rgba(5,7,11,0.92) 40%, rgba(5,7,11,0.6) 100%), url("/unsplash/warehouse-solar.jpg")`,
         }}
       >
         <div className="w-full px-6 sm:px-[50px] relative z-10">
@@ -351,7 +351,7 @@ export default function HowItWorks() {
           <div
             className="rounded-2xl border border-white/10 p-10 md:p-14 overflow-hidden relative min-h-[250px] flex items-center bg-cover bg-center shadow-2xl"
             style={{
-              backgroundImage: `linear-gradient(to right, rgba(5,7,11,0.95) 45%, rgba(5,7,11,0.7) 100%), url("/solutiondemo/ChatGPT Image May 29, 2026, 10_05_44 AM.png")`,
+              backgroundImage: `linear-gradient(to right, rgba(5,7,11,0.95) 45%, rgba(5,7,11,0.7) 100%), url("/unsplash/warehouse-solar.jpg")`,
             }}
           >
             {/* Grid textures */}

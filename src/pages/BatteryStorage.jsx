@@ -20,7 +20,7 @@ export default function BatteryStorage() {
                 className="relative min-h-[90vh] flex flex-col justify-center pt-32 pb-24 border-b border-white/5 overflow-hidden bg-cover bg-center"
                 style={{
                     backgroundImage:
-                        "linear-gradient(to right, rgba(5,7,11,0.96) 30%, rgba(5,7,11,0.75) 60%, rgba(5,7,11,0.40) 100%), url('/img/battery/hero.jpg')",
+                        "linear-gradient(to right, rgba(5,7,11,0.96) 30%, rgba(5,7,11,0.75) 60%, rgba(5,7,11,0.40) 100%), url('/unsplash/battery-storage.jpg')",
                 }}
             >
                 {/* Breadcrumb */}
@@ -166,36 +166,36 @@ export default function BatteryStorage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
                             {
-                                img: "/img/battery/utility.jpg",
+                                img: "/unsplash/battery-utility.jpg",
                                 title: "Utility-Scale Storage",
                                 desc: "Large-scale systems for grid and energy market applications.",
                                 bullets: ["Energy arbitrage", "Capacity markets", "Grid services", "Renewable integration"],
                             },
                             {
-                                img: "/img/battery/btm.jpg",
+                                img: "/unsplash/battery-btm.jpg",
                                 title: "Behind-the-Meter Storage",
                                 desc: "Reduce demand charges and improve energy efficiency.",
                                 bullets: ["Peak shaving", "Load shifting", "Backup power", "Cost optimization"],
                             },
                             {
-                                img: "/img/battery/microgrid.jpg",
+                                img: "/unsplash/battery-microgrid.jpg",
                                 title: "Microgrids & Hybrid Systems",
                                 desc: "Combine solar, storage, and generators for resilient power.",
                                 bullets: ["Islanded operations", "Critical load support", "Resilience & reliability", "Renewable optimization"],
                             },
                             {
-                                img: "/img/battery/colocated.jpg",
+                                img: "/unsplash/battery-colocated.jpg",
                                 title: "Co-Located Renewables",
                                 desc: "Maximize the value of solar and wind energy.",
                                 bullets: ["Smoothing & firming", "Curtailment reduction", "Higher renewable yield", "Stable & clean power"],
                             },
                         ].map((card, i) => (
                             <div key={i} className="bg-[#0d0f15] border border-white/8 rounded-xl overflow-hidden group hover:border-[#ff7a00]/30 transition-all shadow-xl">
-                                <div className="aspect-video overflow-hidden">
+                                <div className="aspect-video overflow-hidden bg-[#05070b] flex items-center justify-center">
                                     <img
                                         src={card.img}
                                         alt={card.title}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                                     />
                                 </div>
                                 <div className="p-8">
@@ -298,7 +298,7 @@ export default function BatteryStorage() {
                                 </div>
                                 <div
                                     className="w-full md:w-1/2 min-h-[300px] bg-cover bg-center border-l border-white/10"
-                                    style={{ backgroundImage: "url('/img/battery/casestudy.jpg')" }}
+                                    style={{ backgroundImage: "url('/unsplash/battery-storage.jpg')" }}
                                 />
                             </div>
                         </div>
@@ -380,7 +380,7 @@ export default function BatteryStorage() {
                         className="border border-white/10 rounded-2xl p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden shadow-2xl"
                         style={{
                             backgroundImage:
-                                "linear-gradient(to right, rgba(10,12,18,0.97) 0%, rgba(10,12,18,0.88) 55%, rgba(10,12,18,0.68) 100%), url('/img/battery/hero.jpg')",
+                                "linear-gradient(to right, rgba(10,12,18,0.97) 0%, rgba(10,12,18,0.88) 55%, rgba(10,12,18,0.68) 100%), url('/unsplash/battery-storage.jpg')",
                             backgroundSize: "cover",
                             backgroundPosition: "center",
                         }}

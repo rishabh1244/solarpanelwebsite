@@ -21,7 +21,7 @@ export default function ParkingLot() {
             <section
                 className="relative min-h-[90vh] flex flex-col justify-center pt-32 pb-24 border-b border-white/5 overflow-hidden bg-cover bg-center"
                 style={{
-                    backgroundImage: "linear-gradient(to right, rgba(5,7,11,0.96) 30%, rgba(5,7,11,0.75) 60%, rgba(5,7,11,0.45) 100%), url('/img/parking/hero.jpg')"
+                    backgroundImage: "linear-gradient(to right, rgba(5,7,11,0.96) 30%, rgba(5,7,11,0.75) 60%, rgba(5,7,11,0.45) 100%), url('/unsplash/parking-solar.jpg')"
                 }}
             >
                 {/* Breadcrumb */}
@@ -137,7 +137,7 @@ export default function ParkingLot() {
                         <div className="lg:col-span-5 relative bg-gradient-to-b from-white/[0.01] to-white/[0.03] rounded-2xl border border-white/5 p-4 overflow-hidden min-h-[500px] flex items-center justify-center">
                             <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
                             <img
-                                src="/img/parking/carport-model.png"
+                                src="/unsplash/parking-solar.jpg"
                                 alt="Solar Carport Model"
                                 className="w-full h-auto relative z-10"
                             />
@@ -304,7 +304,7 @@ export default function ParkingLot() {
                                 </div>
                                 <div
                                     className="w-full md:w-1/2 min-h-[400px] bg-cover bg-center border-l border-white/10"
-                                    style={{ backgroundImage: "url('/img/parking/casestudy.jpg')" }}
+                                    style={{ backgroundImage: "url('/unsplash/parking-solar.jpg')" }}
                                 />
                             </div>
                         </div>
@@ -342,7 +342,7 @@ export default function ParkingLot() {
                     <div
                         className="relative border border-white/10 rounded-2xl p-12 lg:p-16 overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-12"
                         style={{
-                            backgroundImage: "linear-gradient(to right, rgba(10,12,18,0.95) 0%, rgba(10,12,18,0.8) 100%), url('/img/parking/ev-bg.jpg')",
+                            backgroundImage: "linear-gradient(to right, rgba(10,12,18,0.95) 0%, rgba(10,12,18,0.8) 100%), url('/unsplash/parking-solar.jpg')",
                             backgroundSize: 'cover',
                             backgroundPosition: 'center'
                         }}
@@ -428,7 +428,7 @@ export default function ParkingLot() {
                     <div
                         className="relative border border-white/10 rounded-2xl p-12 lg:p-16 overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-12"
                         style={{
-                            backgroundImage: "linear-gradient(to right, rgba(10,12,18,0.97) 0%, rgba(10,12,18,0.88) 55%, rgba(10,12,18,0.68) 100%), url('/img/parking/hero.jpg')",
+                            backgroundImage: "linear-gradient(to right, rgba(10,12,18,0.97) 0%, rgba(10,12,18,0.88) 55%, rgba(10,12,18,0.68) 100%), url('/unsplash/parking-solar.jpg')",
                             backgroundSize: 'cover',
                             backgroundPosition: 'center'
                         }}
