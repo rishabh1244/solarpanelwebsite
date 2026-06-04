@@ -12,6 +12,7 @@ import Videos from "./pages/Videos";
 import WarehouseSolution from "./pages/WarehouseSolution";
 import WindEnergy from "./pages/WindEnergy";
 import BatteryStorage from "./pages/BatteryStorage";
+import ParkingLot from "./pages/ParkingLot";
 import logoImg from "./assets/image.png";
 import { MapPin, ChevronDown, ChevronRight, Sun, Wind, Battery, Warehouse, TreePine, CarFront } from "lucide-react";
 import HowItWorks from "./pages/HowItWorks";
@@ -73,8 +74,8 @@ function Layout() {
       name: "VPP Solution",
       dropdown: [
         { name: "Warehouse & Logistics", path: "/solutions/warehouse", icon: <Warehouse size={16} /> },
-        { name: "Idle Land & Buffer Acreage", path: "/property-types", icon: <TreePine size={16} /> },
-        { name: "Commercial Parking Lot", path: "/property-types", icon: <CarFront size={16} /> }
+        { name: "Commercial Parking Lot", path: "/solutions/parking", icon: <CarFront size={16} /> },
+        { name: "Idle Land & Buffer Acreage", path: "/property-types", icon: <TreePine size={16} /> }
       ]
     },
     { name: "Team", path: "/team" },
@@ -398,6 +399,7 @@ function Layout() {
         <Route path="/solutions/warehouse" element={<WarehouseSolution />} />
         <Route path="/solutions/wind" element={<WindEnergy />} />
         <Route path="/solutions/battery" element={<BatteryStorage />} />
+        <Route path="/solutions/parking" element={<ParkingLot />} />
         <Route path="/property-types" element={<PropertyTypes />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
       </Routes>
@@ -424,12 +426,42 @@ function Layout() {
             <div>
               <h4 className="text-white font-bold mb-5 text-[22px] tracking-widest uppercase">SOLUTIONS</h4>
               <ul className="space-y-3">
-                {["Warehouse & Logistics", "Idle Land", "Parking Lots", "Battery Storage", "VPP & Markets"].map(l => (
+                {[
+                  { name: "Warehouse & Logistics", path: "/solutions/warehouse" },
+                  { name: "Parking Lots", path: "/solutions/parking" },
+                  { name: "Idle Land & Buffer Acreage", path: "/property-types" },
+                  { name: "Solar Energy System", path: "/services" },
+                  { name: "Wind Energy", path: "/solutions/wind" },
+                  { name: "Battery Storage", path: "/solutions/battery" },
+                  { name: "VPP & Markets", path: "/how-it-works" }
+                ].map(l => (
+                  <li key={l.name}>
+                    <Link to={l.path} className="text-white text-[20px] hover:text-[#ff7a00] transition-colors">
+                      {l.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-5 text-[22px] tracking-widest uppercase">PROPERTY TYPES</h4>
+              <ul className="space-y-3">
+                {["Industrial", "Commercial", "Retail", "Logistics", "Multi-Tenant"].map(l => (
                   <li key={l}>
-                    <Link to={l === "Warehouse & Logistics" ? "/solutions/warehouse" : "#"} className="text-white text-[20px] hover:text-gray-300 transition-colors">
+                    <Link to="/property-types" className="text-white text-[20px] hover:text-[#ff7a00] transition-colors">
                       {l}
                     </Link>
                   </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-5 text-[22px] tracking-widest uppercase">RESOURCES</h4>
+              <ul className="space-y-3">
+                {["Case Studies", "Whitepapers", "Blog", "FAQs", "Investor Relations"].map(l => (
+                  <li key={l}><Link to="#" className="text-white text-[20px] hover:text-[#ff7a00] transition-colors">{l}</Link></li>
                 ))}
               </ul>
             </div>
@@ -441,9 +473,10 @@ function Layout() {
                   let path = "#";
                   if (l === "About Us") path = "/about";
                   if (l === "Contact Us") path = "/contact";
+                  if (l === "Leadership") path = "/team";
                   return (
                     <li key={l}>
-                      <Link to={path} className="text-white text-[20px] hover:text-gray-300 transition-colors">
+                      <Link to={path} className="text-white text-[20px] hover:text-[#ff7a00] transition-colors">
                         {l}
                       </Link>
                     </li>
@@ -452,26 +485,18 @@ function Layout() {
               </ul>
             </div>
 
-            <div>
-              <h4 className="text-white font-bold mb-5 text-[22px] tracking-widest uppercase">RESOURCES</h4>
-              <ul className="space-y-3">
-                {["Case Studies", "Whitepapers", "Blog", "FAQs", "Investor Relations"].map(l => (
-                  <li key={l}><Link to="#" className="text-white text-[22px] hover:text-gray-300 transition-colors">{l}</Link></li>
-                ))}
-              </ul>
-            </div>
-
             <div className="col-span-2 md:col-span-1 lg:col-span-1">
               <h4 className="text-white font-bold mb-5 text-[22px] tracking-widest uppercase">CONTACT US</h4>
               <ul className="space-y-2 mb-6">
-                <li className="text-white text-[22px]">hello@techopsglobal.com</li>
-                <li className="text-white text-[22px]">(608) 555-0123</li>
-                <li className="text-white text-[22px] flex items-center gap-2 mt-2"><MapPin size={14} /> Princeton, NJ</li>
+                <li className="text-white text-[20px]">hello@techopsglobal.com</li>
+                <li className="text-white text-[20px]">(609) 555-0123</li>
+                <li className="text-white text-[20px] flex items-center gap-2 mt-2"><MapPin size={14} /> Princeton, NJ</li>
               </ul>
               <img
                 src="/assets/images/resource/footer-thumb.png"
                 alt="USA map indicating PJM markets"
                 className="w-full max-w-[160px] opacity-80 mt-4"
+                style={{ filter: 'brightness(0) invert(1)' }}
               />
             </div>
 

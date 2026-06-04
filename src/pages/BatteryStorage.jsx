@@ -68,7 +68,7 @@ export default function BatteryStorage() {
                         </div>
 
                         {/* Right feature cards */}
-                        <div className="lg:col-span-5 flex flex-col gap-5 mt-10 lg:mt-0">
+                        <div className="lg:col-span-5 flex flex-col gap-6 mt-10 lg:mt-0 relative">
                             {[
                                 { icon: <DollarSign size={20} />, color: "#8dff4d", title: "ZERO CAPEX", desc: "We fund, build, own & operate." },
                                 { icon: <TrendingUp size={20} />, color: "#8dff4d", title: "MAXIMUM VALUE", desc: "Stack multiple revenue streams through energy markets." },
@@ -77,11 +77,11 @@ export default function BatteryStorage() {
                             ].map((card, i) => (
                                 <div
                                     key={i}
-                                    className="bg-[#111318]/90 backdrop-blur-md border border-white/10 rounded-2xl p-5 shadow-2xl transition-all hover:border-white/20"
+                                    className="bg-[#111318]/90 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-2xl transition-all hover:border-white/20"
                                 >
                                     <div className="flex gap-4 items-start">
                                         <div
-                                            className="w-11 h-11 rounded-full flex items-center justify-center shrink-0"
+                                            className="w-12 h-12 rounded-full flex items-center justify-center shrink-0"
                                             style={{ border: `2px solid ${card.color}`, color: card.color, background: `${card.color}0d` }}
                                         >
                                             {card.icon}
@@ -100,11 +100,11 @@ export default function BatteryStorage() {
             </section>
 
             {/* ===== 2. THE STORAGE ADVANTAGE ===== */}
-            <section className="py-24 bg-[#07090e] border-b border-white/5">
+            <section className="py-28 bg-[#07090e] border-b border-white/5">
                 <div className="w-full px-[50px]">
-                    <div className="flex items-center gap-6 mb-14">
+                    <div className="flex items-center gap-6 mb-16">
                         <div className="h-[1px] bg-white/10 flex-1" />
-                        <h2 className="!text-white text-[22px] md:text-[24px] font-extrabold tracking-[4px] uppercase whitespace-nowrap text-center">
+                        <h2 className="!text-white text-[24px] md:text-[24px] font-extrabold tracking-[4px] uppercase whitespace-nowrap text-center">
                             THE STORAGE ADVANTAGE
                         </h2>
                         <div className="h-[1px] bg-white/10 flex-1" />
@@ -130,7 +130,7 @@ export default function BatteryStorage() {
                     </div>
 
                     {/* Stats strip */}
-                    <div className="grid md:grid-cols-5 border border-white/10 rounded-2xl bg-[#0a0c10] divide-y md:divide-y-0 md:divide-x divide-white/10 shadow-2xl overflow-hidden">
+                    <div className="grid md:grid-cols-5 border border-white/10 rounded-2xl bg-[#0a0c10] p-8 lg:p-10 divide-y md:divide-y-0 md:divide-x divide-white/10 shadow-2xl overflow-hidden">
                         {[
                             { icon: <BatteryCharging size={26} strokeWidth={1.5} />, value: "2.5GWh+", label: "Storage Capacity Pipeline" },
                             { icon: <BarChart3 size={26} strokeWidth={1.5} />, value: "150+", label: "Projects Developed" },
@@ -138,7 +138,7 @@ export default function BatteryStorage() {
                             { icon: <DollarSign size={26} strokeWidth={1.5} />, value: "$200M+", label: "Market Revenue Potential" },
                             { icon: <Leaf size={26} strokeWidth={1.5} />, value: "100%", label: "Clean Energy Infrastructure" },
                         ].map((s, i) => (
-                            <div key={i} className="flex items-center gap-5 p-7">
+                            <div key={i} className="flex items-center gap-5 p-2 md:pl-8 first:pl-2">
                                 <div className="w-14 h-14 rounded-full border-2 border-[#ff7a00] text-[#ff7a00] flex items-center justify-center bg-[#ff7a00]/5 shrink-0">
                                     {s.icon}
                                 </div>
@@ -153,17 +153,17 @@ export default function BatteryStorage() {
             </section>
 
             {/* ===== 3. SOLUTIONS FOR EVERY NEED ===== */}
-            <section className="py-24 bg-[#05070b] border-b border-white/5">
+            <section className="py-28 bg-[#05070b] border-b border-white/5">
                 <div className="w-full px-[50px]">
-                    <div className="flex items-center gap-6 mb-14">
+                    <div className="flex items-center gap-6 mb-16">
                         <div className="h-[1px] bg-white/10 flex-1" />
-                        <h2 className="!text-white text-[22px] md:text-[24px] font-extrabold tracking-[4px] uppercase whitespace-nowrap text-center">
+                        <h2 className="!text-white text-[24px] md:text-[24px] font-extrabold tracking-[4px] uppercase whitespace-nowrap text-center">
                             BATTERY STORAGE SOLUTIONS FOR EVERY NEED
                         </h2>
                         <div className="h-[1px] bg-white/10 flex-1" />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
                             {
                                 img: "/img/battery/utility.jpg",
@@ -190,29 +190,29 @@ export default function BatteryStorage() {
                                 bullets: ["Smoothing & firming", "Curtailment reduction", "Higher renewable yield", "Stable & clean power"],
                             },
                         ].map((card, i) => (
-                            <div key={i} className="bg-[#0d0f15] border border-white/8 rounded-xl overflow-hidden group hover:border-[#ff7a00]/30 transition-all">
-                                <div className="h-[200px] overflow-hidden">
+                            <div key={i} className="bg-[#0d0f15] border border-white/8 rounded-xl overflow-hidden group hover:border-[#ff7a00]/30 transition-all shadow-xl">
+                                <div className="aspect-video overflow-hidden">
                                     <img
                                         src={card.img}
                                         alt={card.title}
                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
                                 </div>
-                                <div className="p-6">
-                                    <h3 className="!text-white font-extrabold text-[20px] mb-2">{card.title}</h3>
-                                    <p className="text-gray-400 text-[16px] leading-relaxed mb-5">{card.desc}</p>
-                                    <ul className="space-y-2 mb-6">
+                                <div className="p-8">
+                                    <h3 className="!text-white font-extrabold text-[22px] mb-3">{card.title}</h3>
+                                    <p className="text-gray-400 text-[17px] leading-relaxed mb-6 font-light">{card.desc}</p>
+                                    <ul className="space-y-3 mb-8">
                                         {card.bullets.map((b, j) => (
-                                            <li key={j} className="flex items-center gap-2 text-white text-[15px]">
-                                                <CheckCircle2 size={14} className="text-[#ff7a00] shrink-0" /> {b}
+                                            <li key={j} className="flex items-center gap-3 text-white text-[16px] font-medium">
+                                                <CheckCircle2 size={16} className="text-[#ff7a00] shrink-0" /> {b}
                                             </li>
                                         ))}
                                     </ul>
                                     <Link
                                         to="/contact"
-                                        className="inline-flex items-center gap-2 text-[#ff7a00] text-[14px] font-bold tracking-wider uppercase hover:underline"
+                                        className="inline-flex items-center gap-2 text-[#ff7a00] text-[15px] font-bold tracking-wider uppercase hover:underline"
                                     >
-                                        EXPLORE SOLUTION <ArrowRight size={13} />
+                                        EXPLORE SOLUTION <ArrowRight size={14} />
                                     </Link>
                                 </div>
                             </div>
@@ -222,11 +222,11 @@ export default function BatteryStorage() {
             </section>
 
             {/* ===== 4. HOW IT WORKS ===== */}
-            <section className="py-24 bg-[#07090e] border-b border-white/5" id="how-it-works">
+            <section className="py-28 bg-[#07090e] border-b border-white/5" id="how-it-works">
                 <div className="w-full px-[50px]">
-                    <div className="flex items-center gap-6 mb-14">
+                    <div className="flex items-center gap-6 mb-16">
                         <div className="h-[1px] bg-white/10 flex-1" />
-                        <h2 className="!text-white text-[22px] md:text-[24px] font-extrabold tracking-[4px] uppercase whitespace-nowrap">
+                        <h2 className="!text-white text-[24px] md:text-[24px] font-extrabold tracking-[4px] uppercase whitespace-nowrap">
                             HOW IT WORKS
                         </h2>
                         <div className="h-[1px] bg-white/10 flex-1" />
@@ -259,7 +259,7 @@ export default function BatteryStorage() {
             </section>
 
             {/* ===== 5. CASE STUDY + DASHBOARD ===== */}
-            <section className="py-24 bg-[#05070b] border-b border-white/5">
+            <section className="py-28 bg-[#05070b] border-b border-white/5">
                 <div className="w-full px-[50px]">
                     <div className="grid lg:grid-cols-12 gap-12 items-start">
 
