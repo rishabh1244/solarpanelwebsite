@@ -311,6 +311,80 @@ a {
     height: 38px !important;
 }
 
+/* Navbar Dropdown Styles */
+.nav-item-container:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-dropdown-toggle:hover .chevron-icon {
+    transform: rotate(180deg);
+}
+
+.chevron-icon {
+    transition: transform 0.3s ease;
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 240px;
+    background: rgba(11, 13, 19, 0.98);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 12px 0;
+    margin-top: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: transparent;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    color: #e5e7eb !important;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 122, 0, 0.1);
+    color: #ff7a00 !important;
+    padding-left: 25px;
+}
+
+.sub-icon {
+    color: #ff7a00;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-dropdown-container {
+    width: 100%;
+}
+
 /* ============================================================
    GLOBAL DESIGN SYSTEM TYPOGRAPHY
    Applied to all React-managed pages (Warehouse, HowItWorks, PropertyTypes, Home)

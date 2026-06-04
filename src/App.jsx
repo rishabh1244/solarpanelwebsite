@@ -13,7 +13,7 @@ import WarehouseSolution from "./pages/WarehouseSolution";
 import WindEnergy from "./pages/WindEnergy";
 import BatteryStorage from "./pages/BatteryStorage";
 import logoImg from "./assets/image.png";
-import { MapPin } from "lucide-react";
+import { MapPin, ChevronDown, ChevronRight, Sun, Wind, Battery, Warehouse, TreePine, CarFront } from "lucide-react";
 import HowItWorks from "./pages/HowItWorks";
 import PropertyTypes from "./pages/PropertyTypes";
 
@@ -22,6 +22,14 @@ function Layout() {
   const location = useLocation();
   const isActive = (path) => location.pathname === path;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [expandedMenus, setExpandedMenus] = useState({});
+
+  const toggleMobileSubmenu = (menuName) => {
+    setExpandedMenus(prev => ({
+      ...prev,
+      [menuName]: !prev[menuName]
+    }));
+  };
 
   useEffect(() => {
     // Hide the preloader once the layout is ready
@@ -47,7 +55,31 @@ function Layout() {
   // Close mobile menu on route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    setExpandedMenus({});
   }, [location.pathname]);
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    {
+      name: "Solution",
+      dropdown: [
+        { name: "Solar Energy", path: "/services", icon: <Sun size={16} /> },
+        { name: "Wind Energy", path: "/solutions/wind", icon: <Wind size={16} /> },
+        { name: "Battery Storage", path: "/solutions/battery", icon: <Battery size={16} /> }
+      ]
+    },
+    {
+      name: "VPP Solution",
+      dropdown: [
+        { name: "Warehouse & Logistics", path: "/solutions/warehouse", icon: <Warehouse size={16} /> },
+        { name: "Idle Land & Buffer Acreage", path: "/property-types", icon: <TreePine size={16} /> },
+        { name: "Commercial Parking Lot", path: "/property-types", icon: <CarFront size={16} /> }
+      ]
+    },
+    { name: "Team", path: "/team" },
+    { name: "Contact", path: "/contact" }
+  ];
 
   return (
     <>
@@ -71,33 +103,55 @@ function Layout() {
               </div>
             </div>
 
-            {/* Desktop Nav Links */}
             <div className="col-auto d-none d-lg-flex">
               <nav className="d-flex align-items-center gap-4 custom-nav-links">
-                {[
-                  { name: "Home", path: "/" },
-                  { name: "About", path: "/about" },
-                  { name: "Warehouse", path: "/solutions/warehouse" },
-                  { name: "Wind Energy", path: "/solutions/wind" },
-                  { name: "Battery Storage", path: "/solutions/battery" },
-                  { name: "Property Types", path: "/property-types" },
-                  { name: "How It Works", path: "/how-it-works" },
-                  { name: "Team", path: "/team" }
-                ].map(link => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className="text-decoration-none uppercase tracking-wider hover-orange transition-all"
-                    style={{
-                      fontSize: '14px',
-                      fontWeight: '800',
-                      color: isActive(link.path) ? '#ff7a00' : '#ffffff',
-                      borderBottom: isActive(link.path) ? '2px solid #ff7a00' : '2px solid transparent',
-                      paddingBottom: '4px'
-                    }}
-                  >
-                    {link.name}
-                  </Link>
+                {navLinks.map(link => (
+                  <div key={link.name} className="nav-item-container position-relative">
+                    {link.dropdown ? (
+                      <>
+                        <button
+                          className="nav-dropdown-toggle d-flex align-items-center gap-1 text-decoration-none uppercase tracking-wider hover-orange transition-all"
+                          style={{
+                            fontSize: '14px',
+                            fontWeight: '800',
+                            color: '#ffffff',
+                            background: 'none',
+                            border: 'none',
+                            padding: '0 0 4px 0',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          {link.name} <ChevronDown size={14} className="chevron-icon" />
+                        </button>
+                        <div className="nav-dropdown-menu">
+                          {link.dropdown.map(sub => (
+                            <Link
+                              key={sub.name}
+                              to={sub.path}
+                              className="dropdown-item d-flex align-items-center gap-2"
+                            >
+                              <span className="sub-icon">{sub.icon}</span>
+                              {sub.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </>
+                    ) : (
+                      <Link
+                        to={link.path}
+                        className="text-decoration-none uppercase tracking-wider hover-orange transition-all"
+                        style={{
+                          fontSize: '14px',
+                          fontWeight: '800',
+                          color: isActive(link.path) ? '#ff7a00' : '#ffffff',
+                          borderBottom: isActive(link.path) ? '2px solid #ff7a00' : '2px solid transparent',
+                          paddingBottom: '4px'
+                        }}
+                      >
+                        {link.name}
+                      </Link>
+                    )}
+                  </div>
                 ))}
               </nav>
             </div>
@@ -195,42 +249,96 @@ function Layout() {
 
                 {/* Nav Links */}
                 <div style={{ flex: 1, padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  {[
-                    { name: "Home", path: "/" },
-                    { name: "About Us", path: "/about" },
-                    { name: "Warehouse Solutions", path: "/solutions/warehouse" },
-                    { name: "Wind Energy", path: "/solutions/wind" },
-                    { name: "Battery Storage", path: "/solutions/battery" },
-                    { name: "Property Types", path: "/property-types" },
-                    { name: "How It Works", path: "/how-it-works" },
-                    { name: "Team", path: "/team" },
-                  ].map((link, i) => (
+                  {navLinks.map((link, i) => (
                     <motion.div
                       key={link.name}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.05 + i * 0.07, duration: 0.25 }}
                     >
-                      <Link
-                        to={link.path}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        style={{
-                          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                          padding: '14px 18px',
-                          borderRadius: '12px',
-                          textDecoration: 'none',
-                          background: isActive(link.path) ? 'rgba(255,122,0,0.1)' : 'transparent',
-                          border: `1px solid ${isActive(link.path) ? 'rgba(255,122,0,0.25)' : 'transparent'}`,
-                          color: isActive(link.path) ? '#ff7a00' : '#e5e7eb',
-                          fontWeight: 700,
-                          fontSize: '16px',
-                          letterSpacing: '0.3px',
-                          transition: 'all 0.2s'
-                        }}
-                      >
-                        {link.name}
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={isActive(link.path) ? '#ff7a00' : '#6b7280'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
-                      </Link>
+                      {link.dropdown ? (
+                        <div className="mobile-dropdown-container">
+                          <button
+                            onClick={() => toggleMobileSubmenu(link.name)}
+                            style={{
+                              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                              padding: '14px 18px',
+                              width: '100%',
+                              borderRadius: '12px',
+                              background: expandedMenus[link.name] ? 'rgba(255,122,0,0.05)' : 'transparent',
+                              border: '1px solid transparent',
+                              color: expandedMenus[link.name] ? '#ff7a00' : '#e5e7eb',
+                              fontWeight: 700,
+                              fontSize: '16px',
+                              letterSpacing: '0.3px',
+                              transition: 'all 0.2s',
+                              cursor: 'pointer',
+                              textAlign: 'left'
+                            }}
+                          >
+                            {link.name}
+                            <ChevronDown
+                              size={18}
+                              style={{
+                                transform: expandedMenus[link.name] ? 'rotate(180deg)' : 'rotate(0deg)',
+                                transition: 'transform 0.3s ease'
+                              }}
+                            />
+                          </button>
+                          <AnimatePresence>
+                            {expandedMenus[link.name] && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.3, ease: "easeInOut" }}
+                                style={{ overflow: 'hidden', paddingLeft: '12px' }}
+                              >
+                                {link.dropdown.map((sub, si) => (
+                                  <Link
+                                    key={sub.name}
+                                    to={sub.path}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    style={{
+                                      display: 'flex', alignItems: 'center', gap: '12px',
+                                      padding: '12px 18px',
+                                      color: '#9ca3af',
+                                      fontSize: '15px',
+                                      fontWeight: 500,
+                                      textDecoration: 'none',
+                                      transition: 'color 0.2s'
+                                    }}
+                                  >
+                                    <span style={{ color: '#ff7a00', opacity: 0.8 }}>{sub.icon}</span>
+                                    {sub.name}
+                                  </Link>
+                                ))}
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      ) : (
+                        <Link
+                          to={link.path}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          style={{
+                            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                            padding: '14px 18px',
+                            borderRadius: '12px',
+                            textDecoration: 'none',
+                            background: isActive(link.path) ? 'rgba(255,122,0,0.1)' : 'transparent',
+                            border: `1px solid ${isActive(link.path) ? 'rgba(255,122,0,0.25)' : 'transparent'}`,
+                            color: isActive(link.path) ? '#ff7a00' : '#e5e7eb',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            letterSpacing: '0.3px',
+                            transition: 'all 0.2s'
+                          }}
+                        >
+                          {link.name}
+                          <ChevronRight size={16} style={{ opacity: 0.5 }} />
+                        </Link>
+                      )}
                     </motion.div>
                   ))}
                 </div>
